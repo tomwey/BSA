@@ -107,8 +107,8 @@
     
     if ( [value isEqualToString:@"qq"] ) {
         value = [[[[VersionCheckService sharedInstance] appInfo] valueForKey:@"QQ"] description];
-    } else if ( [value isEqualToString:@"mobile"] ) {
-        value = [[[[VersionCheckService sharedInstance] appInfo] valueForKey:@"Tel"] description];
+    } else if ( [value isEqualToString:@"cache"] ) {
+        value = [NSString stringWithFormat:@"%.1fM", [[NSURLCache sharedURLCache] currentMemoryUsage] / 1024.0 / 1024.0];
     } else if ( [value isEqualToString:@"version"] ) {
         value = AWAppVersion();
     }

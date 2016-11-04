@@ -5,12 +5,24 @@
 	<array>
 		<dict>
 			<key>icon</key>
-			<string>icon_nfc.png</string>
+			<string>icon_integration_t.png</string>
 			<key>label</key>
-			<string>电子车票</string>
-			<key>action</key>
-			<string>openNFC</string>
+			<string>积分任务</string>
+			<key>value</key>
+			<string>筹备中</string>
 		</dict>
+		<dict>
+			<key>icon</key>
+			<string>icon_integration_d.png</string>
+			<key>label</key>
+			<string>积分抽奖</string>
+			<key>value</key>
+			<string>600</string>
+			<key>action</key>
+			<string>gotoRewards</string>
+		</dict>
+	</array>
+	<array>
 		<dict>
 			<key>icon</key>
 			<string>icon_invite.png</string>
@@ -24,6 +36,8 @@
 			<string>icon_clear.png</string>
 			<key>label</key>
 			<string>清除缓存</string>
+			<key>value</key>
+			<string>cache</string>
 			<key>action</key>
 			<string>clearCache</string>
 		</dict>
@@ -35,8 +49,6 @@
 			<key>action</key>
 			<string>gotoFeedback</string>
 		</dict>
-	</array>
-	<array>
 		<dict>
 			<key>icon</key>
 			<string>icon_qq.png</string>
@@ -52,28 +64,10 @@
 			<string>icon_wechat.png</string>
 			<key>label</key>
 			<string>官方微信</string>
+			<key>value</key>
+			<string>商务专车</string>
 			<key>action</key>
 			<string>gotoWechat</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_phone.png</string>
-			<key>label</key>
-			<string>客服电话</string>
-			<key>value</key>
-			<string>mobile</string>
-			<key>action</key>
-			<string>openPhone</string>
-		</dict>
-		<dict>
-			<key>icon</key>
-			<string>icon_version.png</string>
-			<key>label</key>
-			<string>当前版本</string>
-			<key>value</key>
-			<string>version</string>
-			<key>action</key>
-			<string>gotoVersion</string>
 		</dict>
 	</array>
 </array>

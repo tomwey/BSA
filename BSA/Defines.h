@@ -69,11 +69,32 @@
 #define LINE_DETAIL_URL       @"http://tdzh.cddzgj.com:9091/lineDetails.html"
 
 ////// API接口
-#define API_HOST      @"http://182.150.21.101:9091/RTI/RTIWCF.svc"
+#define API_HOST      @"http://182.150.21.101:9091/BSI/BSIWCF.svc"
 
 #define API_KEY    @"27654725447"
 #define API_SECRET @"dfjhskdhsiwnvhkjhdguwnvbxmn"
 #define AES_KEY    @"666AA4DF3533497D973D852004B975BC"
+
+// 线路订购列表
+#define GET_BUS_LINE_ORDER_PUBLISH_RESULT @"GetBusLineOrderPublishResult" // pageindex, pagesize
+
+// 线路订购详情
+#define GET_BUS_LINE_ORDER_PUBLISH_RESULT_DETAIL @"GetBusLineOrderPublishResultDetail" // monthtype, lineno
+
+// 提交订单
+#define SUBMIT_ORDER @"SubmitOrder" // lineno, monthtype, packagevalue, userid
+
+// 根据用户电话获取用户信息
+#define GET_USER_MODEL @"GetUserModel" // userid
+
+// 获取所有车型信息
+#define GET_BUS_TYPE_RESULT_BY_WAP
+
+// 获取用户的所有订单
+#define GET_MY_ORDER_PAY_RESULT @"GetMyOrderPayResult" // userid
+
+// 获取所有的优惠券
+#define GET_LINE_ORDER_PACKEGE_RESULT @"GetLineOrderPackegeResult"
 
 // 获取官方信息接口
 #define GET_RT_RESULT @"GetRTResult"
@@ -147,6 +168,7 @@
 #import "DatePicker.h"
 #import "SexPicker.h"
 #import "InputCell.h"
+#import "BannerView.h"
 
 // Controllers
 #import "WebViewVC.h"

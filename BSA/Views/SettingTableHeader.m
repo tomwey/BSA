@@ -22,25 +22,28 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ( self = [super initWithFrame:frame] ) {
-        self.frame = CGRectMake(0, 0, AWFullScreenWidth(), 120);
-        
-        UIImageView *bgView = AWCreateImageView(@"setting_user_bg.png");
+        UIImageView *bgView = AWCreateImageView(nil);
         [self addSubview:bgView];
+        bgView.image = AWImageNoCached(@"setting_head_bg.png");
+        
+        self.frame = bgView.frame = CGRectMake(0, 0, AWFullScreenWidth(), 192);
         
         bgView.contentMode = UIViewContentModeScaleAspectFill;
         bgView.clipsToBounds = YES;
         
-        bgView.frame = self.bounds;
-        
-        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)]];
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     }
     return self;
 }
 
-- (void)tap
+- (void)tap:(UIGestureRecognizer *)sender
 {
-    if ( self.didSelectCallback ) {
-        self.didSelectCallback(self);
+    CGPoint location = [sender locationInView:self];
+    if ( CGRectContainsPoint(self.avatarView.frame, location) ||
+        CGRectContainsPoint(self.nickname.frame, location)) {
+        if ( self.didSelectCallback ) {
+            self.didSelectCallback(self);
+        }
     }
 }
 
@@ -58,13 +61,12 @@
 {
     [super layoutSubviews];
     
-    self.avatarView.center = CGPointMake(15 + self.avatarView.width / 2, self.height / 2);
+    self.avatarView.center = CGPointMake(self.width / 2, self.height / 2 - 20);
     
-    self.arrowView.center  = CGPointMake(self.width - 15 - self.arrowView.width / 2, self.avatarView.midY);
+//    self.arrowView.center  = CGPointMake(self.width - 15 - self.arrowView.width / 2, self.avatarView.midY);
     
-    self.nickname.frame    = CGRectMake(self.avatarView.right + 10, self.avatarView.midY - 34 / 2,
-                                        self.arrowView.left - 10 - self.avatarView.right - 10,
-                                        34);
+    self.nickname.frame    = CGRectMake(0, 0, 150, 40);
+    self.nickname.center   = CGPointMake(self.width / 2, self.avatarView.bottom + 10 + self.nickname.height / 2);
 }
 
 - (UIImageView *)avatarView
@@ -72,7 +74,7 @@
     if ( !_avatarView ) {
         _avatarView = AWCreateImageView(@"default_avatar.png");
         [self addSubview:_avatarView];
-        _avatarView.frame = CGRectMake(0, 0, 64, 64);
+//        _avatarView.frame = CGRectMake(0, 0, 64, 64);
         _avatarView.cornerRadius = _avatarView.height / 2;
     }
     return _avatarView;
@@ -82,21 +84,16 @@
 {
     if ( !_nickname ) {
         _nickname = AWCreateLabel(CGRectZero, @"请登录",
-                                  NSTextAlignmentLeft,
+                                  NSTextAlignmentCenter,
                                   AWSystemFontWithSize(20, NO),
-                                  [UIColor whiteColor]);
+                                  AWColorFromRGB(131, 131, 131));
         [self addSubview:_nickname];
+        _nickname.backgroundColor = [UIColor whiteColor];
+        _nickname.alpha = 0.9;
+        
+        _nickname.cornerRadius = 6;
     }
     return _nickname;
-}
-
-- (UIImageView *)arrowView
-{
-    if ( !_arrowView ) {
-        _arrowView = AWCreateImageView(@"setting_user_arrow.png");
-        [self addSubview:_arrowView];
-    }
-    return _arrowView;
 }
 
 @end

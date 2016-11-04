@@ -86,7 +86,26 @@
 
 - (void)homeBtnClick:(UIButton *)sender
 {
-    
+    switch (sender.tag) {
+        case 1:
+        {
+            // 我要包车
+        }
+            break;
+        case 2:
+        {
+            // 我的订单
+        }
+            break;
+        case 3:
+        {
+            // 优惠券
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)startLoad
