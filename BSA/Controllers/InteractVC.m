@@ -22,8 +22,8 @@
 {
     if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ) {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"互动广场"
-                                                        image:[UIImage imageNamed:@"interact.png"]
-                                                selectedImage:[UIImage imageNamed:@"interact_selected.png"]];
+                                                        image:[UIImage imageNamed:@"news.png"]
+                                                selectedImage:[UIImage imageNamed:@"news_selected.png"]];
     }
     return self;
 }

@@ -76,15 +76,15 @@
     
     [self.window makeKeyAndVisible];
     
-    [[VersionCheckService sharedInstance] startCheckWithSilent:YES];
+//    [[VersionCheckService sharedInstance] startCheckWithSilent:YES];
     
     // 友盟统计
-    UMConfigInstance.appKey = UMENG_KEY;
-    UMConfigInstance.channelId = @"App Store";
-    [MobClick startWithConfigure:UMConfigInstance];
+//    UMConfigInstance.appKey = UMENG_KEY;
+//    UMConfigInstance.channelId = @"App Store";
+//    [MobClick startWithConfigure:UMConfigInstance];
     
     // 初始化分享SDK
-    [self initShareSDK];
+//    [self initShareSDK];
     
     return YES;
 }

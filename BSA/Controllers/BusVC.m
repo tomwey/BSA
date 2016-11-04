@@ -18,8 +18,8 @@
 {
     if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ) {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"定制公交"
-                                                        image:[UIImage imageNamed:@"inquire.png"]
-                                                selectedImage:[UIImage imageNamed:@"inquire_selected.png"]];
+                                                        image:[UIImage imageNamed:@"dzbus.png"]
+                                                selectedImage:[UIImage imageNamed:@"dzbus_selected.png"]];
     }
     return self;
 }

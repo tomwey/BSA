@@ -22,8 +22,8 @@
 {
     if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ) {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"商务班车"
-                                                        image:[UIImage imageNamed:@"home.png"]
-                                                selectedImage:[UIImage imageNamed:@"home_selected.png"]];
+                                                        image:[UIImage imageNamed:@"bus.png"]
+                                                selectedImage:[UIImage imageNamed:@"bus_selected.png"]];
     }
     return self;
 }
@@ -36,6 +36,35 @@
                                                                     self.contentView.width * 0.4167)];
     capitionView.backgroundColor = MAIN_BLUE_COLOR;
     [self.contentView addSubview:capitionView];
+    
+    NSArray *buttons = @[@"chartered.png", @"order.png", @"coupon.png"];
+    NSArray *titles  = @[@"我要包车", @"我的订单", @"优惠券"];
+    NSInteger i = 0;
+    CGFloat left = 40;
+    for (NSString *image in buttons) {
+        UIButton *btn = AWCreateImageButton(image, self, @selector(homeBtnClick:));
+        [capitionView addSubview:btn];
+        
+        static CGFloat padding;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            padding = ( capitionView.width - buttons.count * btn.width - left * 2 ) / (buttons.count - 1);
+        });
+        
+        btn.center = CGPointMake(left + btn.width / 2 + ( btn.width + padding ) * i, capitionView.height / 2 - 5);
+        
+        UILabel *titleLabel = AWCreateLabel(CGRectMake(0, 0, 80, 30),
+                                            titles[i],
+                                            NSTextAlignmentCenter,
+                                            AWSystemFontWithSize(16, NO),
+                                            [UIColor whiteColor]);
+        titleLabel.center = CGPointMake(btn.midX, btn.bottom + titleLabel.height / 2 + 5);
+        [capitionView addSubview:titleLabel];
+        
+        btn.tag = i;
+        
+        i++;
+    }
     
     CGRect frame = CGRectMake(0, 0, self.contentView.width,
                               self.contentView.height - 49 - capitionView.height);
@@ -53,6 +82,11 @@
     self.tableView.rowHeight = 156;
     
     [self startLoad];
+}
+
+- (void)homeBtnClick:(UIButton *)sender
+{
+    
 }
 
 - (void)startLoad
