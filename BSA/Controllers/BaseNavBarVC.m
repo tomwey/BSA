@@ -91,8 +91,10 @@
         self.navBar.leftItem = nil;
         return nil;
     } else {
-        UIButton *btn = AWCreateImageButton(imageName, self, @selector(btnBack1Clicked:));
+        UIButton *btn = AWCreateImageButtonWithSize(imageName, CGSizeMake(30, 40), self, @selector(btnBack1Clicked:));
+        //AWCreateImageButton(imageName, self, @selector(btnBack1Clicked:));
         btn.tag = kNavBarLeftItemTag;
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
         self.navBar.leftItem = btn;//[[UIBarButtonItem alloc] initWithCustomView:btn];
         return btn;
     }

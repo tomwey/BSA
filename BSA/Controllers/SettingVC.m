@@ -176,8 +176,10 @@
 
 - (void)gotoFeedback
 {
-    WebViewVC *page = [[WebViewVC alloc] initWithURL:[NSURL URLWithString:FEEDBACK_URL] title:@"意见反馈"];
-    [AWAppWindow().navController pushViewController:page animated:YES];
+//    WebViewVC *page = [[WebViewVC alloc] initWithURL:[NSURL URLWithString:FEEDBACK_URL] title:@"意见反馈"];
+//    [AWAppWindow().navController pushViewController:page animated:YES];
+    UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"FeedbackVC" params:nil];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)openQQ

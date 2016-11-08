@@ -161,6 +161,9 @@
 		975822881DC9C2BF00CA1476 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 975822871DC9C2BF00CA1476 /* logo.png */; };
 		975822D41DCACE3B00CA1476 /* nodata.png in Resources */ = {isa = PBXBuildFile; fileRef = 975822D31DCACE3B00CA1476 /* nodata.png */; };
 		975822D61DCACE4300CA1476 /* notransfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 975822D51DCACE4300CA1476 /* notransfer.png */; };
+		978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69CC1DD169C00013E6B0 /* FeedbackVC.m */; };
+		978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */; };
+		978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */; };
 		97AC4C931DBDA9FD00DBBA74 /* InviteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AC4C921DBDA9FD00DBBA74 /* InviteVC.m */; };
 		97AC4CA61DBDC73500DBBA74 /* UserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97AC4CA51DBDC73500DBBA74 /* UserVC.m */; };
 		97BF23D51DBD8E1C0009F46C /* WebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BF23D41DBD8E1C0009F46C /* WebViewVC.m */; };
@@ -468,6 +471,12 @@
 		975822871DC9C2BF00CA1476 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		975822D31DCACE3B00CA1476 /* nodata.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nodata.png; sourceTree = "<group>"; };
 		975822D51DCACE4300CA1476 /* notransfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notransfer.png; sourceTree = "<group>"; };
+		978B69CB1DD169C00013E6B0 /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
+		978B69CC1DD169C00013E6B0 /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
+		978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWDeallocBlock.h"; sourceTree = "<group>"; };
+		978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AWDeallocBlock.m"; sourceTree = "<group>"; };
+		978B69D21DD16A0F0013E6B0 /* UITextView+AWPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+AWPlaceholder.h"; sourceTree = "<group>"; };
+		978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+AWPlaceholder.m"; sourceTree = "<group>"; };
 		97AC4C911DBDA9FD00DBBA74 /* InviteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteVC.h; sourceTree = "<group>"; };
 		97AC4C921DBDA9FD00DBBA74 /* InviteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteVC.m; sourceTree = "<group>"; };
 		97AC4CA41DBDC73500DBBA74 /* UserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVC.h; sourceTree = "<group>"; };
@@ -1112,6 +1121,24 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		978B69CE1DD16A0F0013E6B0 /* AWDeallocBlock */ = {
+			isa = PBXGroup;
+			children = (
+				978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */,
+				978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */,
+			);
+			path = AWDeallocBlock;
+			sourceTree = "<group>";
+		};
+		978B69D11DD16A0F0013E6B0 /* AWTextView */ = {
+			isa = PBXGroup;
+			children = (
+				978B69D21DD16A0F0013E6B0 /* UITextView+AWPlaceholder.h */,
+				978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */,
+			);
+			path = AWTextView;
+			sourceTree = "<group>";
+		};
 		97CF18641DC0737700ED8A73 /* 3rdLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,6 +1305,8 @@
 				97AC4C921DBDA9FD00DBBA74 /* InviteVC.m */,
 				97AC4CA41DBDC73500DBBA74 /* UserVC.h */,
 				97AC4CA51DBDC73500DBBA74 /* UserVC.m */,
+				978B69CB1DD169C00013E6B0 /* FeedbackVC.h */,
+				978B69CC1DD169C00013E6B0 /* FeedbackVC.m */,
 				97579A891DBDCE5C00D99981 /* LoginVC.h */,
 				97579A8A1DBDCE5C00D99981 /* LoginVC.m */,
 				97579A9B1DBDE05000D99981 /* PasswordVC.h */,
@@ -1366,6 +1395,8 @@
 		97F130391DAB18C500806E8A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				978B69CE1DD16A0F0013E6B0 /* AWDeallocBlock */,
+				978B69D11DD16A0F0013E6B0 /* AWTextView */,
 				97579AB91DBF573C00D99981 /* Toast */,
 				97F1303A1DAB18C500806E8A /* AWAPIManager */,
 				97579A941DBDD62B00D99981 /* AWButton */,
@@ -1916,6 +1947,7 @@
 				975820F21DC6E4A800CA1476 /* CTPersistanceTransaction.m in Sources */,
 				97BF23D51DBD8E1C0009F46C /* WebViewVC.m in Sources */,
 				97F130DE1DAB18D300806E8A /* AFURLConnectionOperation.m in Sources */,
+				978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */,
 				97F130A81DAB18C500806E8A /* UITableView+LoadEmptyOrErrorHandle.m in Sources */,
 				97579A881DBDCBBD00D99981 /* NetworkService.m in Sources */,
 				97F131981DAB400000806E8A /* MBProgressHUD.m in Sources */,
@@ -1957,6 +1989,7 @@
 				97CF194A1DC343AF00ED8A73 /* WalkingView.m in Sources */,
 				97F130931DAB18C500806E8A /* APIError.m in Sources */,
 				975820EC1DC6E4A700CA1476 /* CTPersistanceRecord.m in Sources */,
+				978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */,
 				975820E11DC6E4A700CA1476 /* CTPersistanceCriteria.m in Sources */,
 				97F130EB1DAB18D300806E8A /* UIWebView+AFNetworking.m in Sources */,
 				97CF19411DC2E5B500ED8A73 /* BusLineVC.m in Sources */,
@@ -1970,6 +2003,7 @@
 				97F130F41DAB1A9400806E8A /* BaseNavBarVC.m in Sources */,
 				97579AA31DBDED8C00D99981 /* UpdateNicknameVC.m in Sources */,
 				97F130AD1DAB18C500806E8A /* AWUIUtils.m in Sources */,
+				978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */,
 				97F130A21DAB18C500806E8A /* AWMediator.m in Sources */,
 				97F130A51DAB18C500806E8A /* AWMultipleColumnTableViewDataSource.m in Sources */,
 				97F130A91DAB18C500806E8A /* UITableView+LoadNetworkData.m in Sources */,

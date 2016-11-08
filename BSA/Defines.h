@@ -152,6 +152,8 @@
 
 #import "AWTextField.h"
 
+#import "UITextView+AWPlaceholder.h"
+
 // Models
 #import "User.h"
 #import "Location.h"
