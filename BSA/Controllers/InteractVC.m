@@ -134,16 +134,4 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     [self.contentView makeToast:@"Oops, 出错了！" duration:2.0 position:CSToastPositionTop];
 }
 
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
-//{
-//    if ( [[navigationAction.request.URL absoluteString] isEqualToString:SQUARE_LIST_URL] ) {
-//        decisionHandler(WKNavigationActionPolicyAllow);
-//    } else {
-//        decisionHandler(WKNavigationActionPolicyCancel);
-//        
-//        WebViewVC *vc = [[WebViewVC alloc] initWithURL:navigationAction.request.URL title:@"详情"];
-//        [self.tabBarController.navigationController pushViewController:vc animated:YES];
-//    }
-//}
-
 @end
