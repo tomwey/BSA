@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 FOUNDATION_EXTERN NSString * const AWLocationManagerDidFinishLocatingNotification;
+FOUNDATION_EXTERN NSString * const AWLocationManagerDidFinishGeocodingLocationNotification;
 
 typedef NS_ENUM(NSInteger, AWLocationError) {
     AWLocationErrorUnknown    = -1, // 未知错误
@@ -21,11 +22,16 @@ typedef NS_ENUM(NSInteger, AWLocationError) {
 
 @interface AWLocationManager : NSObject
 
-/** 返回当前最新的位置 */
+/** 返回当前最新的位置，火星坐标 */
 @property (nonatomic, strong, readonly) CLLocation *currentLocation;
+
+/** 返回当前最新的位置逆编码信息 */
+@property (nonatomic, strong, readonly) id currentGeocodeLocation;
 
 /** 定位出错 */
 @property (nonatomic, strong, readonly) NSError    *locatedError;
+
+@property (nonatomic, strong, readonly) NSError    *geocodingError;
 
 + (AWLocationManager *)sharedInstance;
 
@@ -35,6 +41,15 @@ typedef NS_ENUM(NSInteger, AWLocationError) {
  * @param completionBlock 定位完成的回调
  */
 - (void)startUpdatingLocation:(void (^)(CLLocation *location, NSError *error))completionBlock;
+
+/**
+ * 位置逆编码
+ * 
+ * @param location 位置
+ * @param completion 位置解析完成的回调
+ */
+- (void)startGeocodingLocation:(CLLocation *)aLocation
+                    completion:(void (^)(id result, NSError *error))completion;
 
 /**
  * 重新定位
