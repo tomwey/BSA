@@ -7,6 +7,7 @@
 //
 
 #import "CustomNavBar.h"
+#import <objc/runtime.h>
 
 @interface CustomNavBar ()
 
@@ -29,6 +30,10 @@ static CGFloat const kRightItemRightOffset = kLeftItemLeftOffset;
 static CGFloat const kFluidItemSpacing     = 10.0;
 
 @dynamic backgroundImage, leftItem, rightItem, title, titleView;
+
+@synthesize leftMarginOfLeftItem   = _leftMarginOfLeftItem;
+@synthesize rightMarginOfRightItem = _rightMarginOfRightItem;
+@synthesize marginOfFluidItem      = _marginOfFluidItem;
 
 #pragma mark -
 #pragma mark Lifecycle methods
@@ -56,6 +61,10 @@ static CGFloat const kFluidItemSpacing     = 10.0;
     self.backgroundView.frame = self.bounds;
     [self addSubview:self.backgroundView];
     self.backgroundView.userInteractionEnabled = YES;
+    
+    _leftMarginOfLeftItem   = kLeftItemLeftOffset;
+    _rightMarginOfRightItem = kRightItemRightOffset;
+    _marginOfFluidItem      = kFluidItemSpacing;
 }
 
 - (void)dealloc
@@ -77,23 +86,12 @@ static CGFloat const kFluidItemSpacing     = 10.0;
     [super layoutSubviews];
     
     if ( self.leftItem ) {
-        self.inLeftItem.center = CGPointMake(kLeftItemLeftOffset + CGRectGetWidth(self.inLeftItem.bounds) / 2,
+        self.inLeftItem.center = CGPointMake(self.leftMarginOfLeftItem + CGRectGetWidth(self.inLeftItem.bounds) / 2,
                                              CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
     }
     
     if ( self.rightItem ) {
-        self.inRightItem.center = CGPointMake(CGRectGetWidth(self.bounds) - kRightItemRightOffset - CGRectGetWidth(self.inLeftItem.bounds) / 2,
-                                              CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
-    }
-    
-    if ( self.inTitleLabel ) {
-        self.inTitleLabel.frame  = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.618, 40);
-        self.inTitleLabel.center = CGPointMake(CGRectGetWidth(self.bounds) / 2,
-                                               CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
-    }
-    
-    if ( self.inTitleView ) {
-        self.inTitleView.center = CGPointMake(CGRectGetWidth(self.bounds) / 2,
+        self.inRightItem.center = CGPointMake(CGRectGetWidth(self.bounds) - self.rightMarginOfRightItem - CGRectGetWidth(self.inLeftItem.bounds) / 2,
                                               CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
     }
     
@@ -215,6 +213,7 @@ static CGFloat const kFluidItemSpacing     = 10.0;
                                                                       44)];
             
             self.inTitleLabel.backgroundColor = [UIColor clearColor];
+            self.inTitleLabel.numberOfLines   = 2;
             self.inTitleLabel.textAlignment = NSTextAlignmentCenter;
             [self.backgroundView addSubview:self.inTitleLabel];
         }
@@ -271,6 +270,30 @@ static CGFloat const kFluidItemSpacing     = 10.0;
 
 - (UIColor *)backgroundColor { return self.backgroundView.backgroundColor; }
 
+- (void)setLeftMarginOfLeftItem:(CGFloat)leftMarginOfLeftItem
+{
+    if ( _leftMarginOfLeftItem != leftMarginOfLeftItem ) {
+        _leftMarginOfLeftItem = leftMarginOfLeftItem;
+        [self setNeedsLayout];
+    }
+}
+
+- (void)setRightMarginOfRightItem:(CGFloat)rightMarginOfRightItem
+{
+    if ( _rightMarginOfRightItem != rightMarginOfRightItem ) {
+        _rightMarginOfRightItem = rightMarginOfRightItem;
+        [self setNeedsLayout];
+    }
+}
+
+- (void)setMarginOfFluidItem:(CGFloat)marginOfFluidItem
+{
+    if ( _marginOfFluidItem != marginOfFluidItem ) {
+        _marginOfFluidItem = marginOfFluidItem;
+        [self setNeedsLayout];
+    }
+}
+
 #pragma mark -
 #pragma mark Private Methods
 - (CGFloat)statusBarHeight
@@ -280,34 +303,55 @@ static CGFloat const kFluidItemSpacing     = 10.0;
 
 - (void)layoutFluidItems
 {
-    CGFloat lastMaxX = kLeftItemLeftOffset + CGRectGetWidth(self.leftItem.frame);
-    if ( lastMaxX > kLeftItemLeftOffset ) {
-        lastMaxX += kFluidItemSpacing;
+    // 布局左边的item
+    CGFloat leftOffsetX;
+    if ( !self.leftItem ) {
+        leftOffsetX = self.leftMarginOfLeftItem;
+    } else {
+        leftOffsetX = CGRectGetMaxX(self.leftItem.frame) + self.marginOfFluidItem;
     }
     
-    for (UIView* item in self.leftFluidItems) {
-        item.center = CGPointMake(lastMaxX + CGRectGetWidth(item.frame) / 2,
+    for (UIView *item in self.leftFluidItems) {
+        item.center = CGPointMake(leftOffsetX + CGRectGetWidth(item.frame) / 2,
                                   CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
-        lastMaxX = CGRectGetMaxX(item.frame) + kFluidItemSpacing;
+        leftOffsetX = CGRectGetMaxX(item.frame) + self.marginOfFluidItem;
     }
     
-    // 设置右边的流式item坐标
-    lastMaxX = CGRectGetWidth(self.bounds) - kRightItemRightOffset - CGRectGetWidth(self.rightItem.frame);
-    if ( self.rightItem ) {
-        lastMaxX -= kFluidItemSpacing;
+    // 布局右边的item
+    CGFloat rightOffsetX;
+    if ( !self.rightItem ) {
+        rightOffsetX = CGRectGetWidth(self.bounds) - self.rightMarginOfRightItem;
+    } else {
+        rightOffsetX = CGRectGetMinX(self.rightItem.frame) - self.marginOfFluidItem;
     }
+    
     NSUInteger count = self.rightFluidItems.count;
     for (NSInteger i = count - 1; i >= 0; i--) {
         UIView* item = self.rightFluidItems[i];
-        item.center = CGPointMake(lastMaxX - CGRectGetWidth(item.frame) / 2,
+        item.center = CGPointMake(rightOffsetX - CGRectGetWidth(item.frame) / 2,
                                   CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
-        lastMaxX = CGRectGetMinX(item.frame) - kFluidItemSpacing;
+        rightOffsetX = CGRectGetMinX(item.frame) - self.marginOfFluidItem;
+    }
+    
+    // 布局标题
+    CGFloat width = rightOffsetX - leftOffsetX;
+    width = MAX(width, CGRectGetWidth(self.bounds) * 0.618);
+    
+    if ( self.inTitleLabel ) {
+        self.inTitleLabel.frame  = CGRectMake(0, 0, width, 44);
+        self.inTitleLabel.center = CGPointMake(CGRectGetWidth(self.bounds) / 2,
+                                               CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
+    }
+    
+    // 布局标题视图
+    if ( self.inTitleView ) {
+        self.inTitleView.center = CGPointMake(CGRectGetWidth(self.bounds) / 2,
+                                              CGRectGetHeight(self.bounds) / 2 + [self statusBarHeight]/2);
     }
 }
 
 @end
 
-#import <objc/runtime.h>
 @implementation UIViewController (CustomNavBar)
 
 static CGFloat const kCustomNavBarTag = 1011013;
@@ -363,6 +407,248 @@ static CGFloat const kContentViewTag  = 1011014;
 - (UIView *)contentView
 {
     return [self.view viewWithTag:kContentViewTag] ?: self.view;
+}
+
+@end
+
+/// 添加导航条item扩展
+@implementation UIViewController (AddNavBarItems)
+
+static inline UIButton *CreateImageButtonWithSize(NSString *imageName, CGSize size, id target, SEL action) {
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:imageName];
+    [button setImage:image forState:UIControlStateNormal];
+    
+    button.exclusiveTouch = YES;
+    
+    CGFloat width = MAX(image.size.width, 40);
+    CGFloat height = MAX(image.size.height, 40);
+    
+    height = MIN(height, 44);
+    
+    button.bounds = CGRectMake(0, 0, width, height);
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+};
+
+static inline UIButton *CreateTextButtonWithSize(NSString *title, CGSize size, id target, SEL action) {
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    
+    button.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    button.exclusiveTouch = YES;
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+};
+
+static char kAWLeftItemCallbackKey,kAWRightItemCallbackKey;
+
+- (void)aw_leftItemClick_10110:(UIButton *)sender
+{
+    void (^clickCallback)(void) = objc_getAssociatedObject(self, &kAWLeftItemCallbackKey);
+    if ( clickCallback ) {
+        clickCallback();
+    }
+}
+
+- (void)aw_rightItemClick_10110:(UIButton *)sender
+{
+    void (^clickCallback)(void) = objc_getAssociatedObject(self, &kAWRightItemCallbackKey);
+    if ( clickCallback ) {
+        clickCallback();
+    }
+}
+
+/**
+ * 添加导航条图片按钮，按钮的大小为图片的大小
+ *
+ * @param itemImage 按钮图片
+ * @param callback  按钮点击回调，注意：callback可能会导致循环引用，使用是请先处理
+ * @return 返回该按钮
+ */
+- (UIView *)addLeftItemWithImage:(NSString *)itemImage  callback:(void (^)(void))callback
+{
+    return [self addLeftItemWithImage:itemImage leftMargin:15 callback:callback];
+}
+
+- (UIView *)addRightItemWithImage:(NSString *)itemImage callback:(void (^)(void))callback
+{
+    return [self addRightItemWithImage:itemImage rightMargin:15 callback:callback];
+}
+
+/**
+ * 添加导航条图片按钮，如果图片大小太小，则按钮的大小为指定的大小，否则为图片的大小
+ *
+ * @param itemImage 按钮图片
+ * @param itemSize  按钮大小
+ * @param callback  按钮点击回调，注意：callback可能会导致循环引用，使用是请先处理
+ * @return 返回该按钮
+ */
+//- (UIView *)addLeftItemWithImage:(NSString *)itemImage  size:(CGSize)itemSize callback:(void (^)(void))callback
+//{
+//    return [self addLeftItemWithImage:itemImage size:itemSize leftMargin:15 callback:callback];
+//}
+//
+//- (UIView *)addRightItemWithImage:(NSString *)itemImage size:(CGSize)itemSize callback:(void (^)(void))callback
+//{
+//    return [self addRightItemWithImage:itemImage size:itemSize rightMargin:15 callback:callback];
+//}
+
+/**
+ * 添加导航条图片按钮，如果图片大小太小，则按钮的大小为指定的大小，否则为图片的大小
+ *
+ * @param itemImage 按钮图片
+ * @param itemSize  按钮大小
+ * @param margin 按钮左间距
+ * @param callback  按钮点击回调，注意：callback可能会导致循环引用，使用是请先处理
+ * @return 返回该按钮
+ */
+- (UIView *)addLeftItemWithImage:(NSString *)itemImage
+                            //size:(CGSize)itemSize
+                      leftMargin:(CGFloat)margin
+                        callback:(void (^)(void))callback
+{
+    objc_setAssociatedObject(self, &kAWLeftItemCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if ( [itemImage length] == 0 ) {
+        self.navBar.leftItem = nil;
+        return nil;
+    } else {
+        UIButton *btn = CreateImageButtonWithSize(itemImage, CGSizeZero, self, @selector(aw_leftItemClick_10110:));
+        self.navBar.leftItem = btn;
+        self.navBar.leftMarginOfLeftItem = margin;
+        return btn;
+    }
+}
+
+- (UIView *)addRightItemWithImage:(NSString *)itemImage
+                             //size:(CGSize)itemSize
+                      rightMargin:(CGFloat)margin
+                         callback:(void (^)(void))callback
+{
+    objc_setAssociatedObject(self, &kAWRightItemCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if ( [itemImage length] == 0 ) {
+        self.navBar.rightItem = nil;
+        return nil;
+    } else {
+        UIButton *btn = CreateImageButtonWithSize(itemImage, CGSizeZero, self, @selector(aw_rightItemClick_10110:));
+        self.navBar.rightItem = btn;
+        self.navBar.rightMarginOfRightItem = margin;
+        return btn;
+    }
+}
+
+/**
+ * 添加导航条文字按钮
+ *
+ * @param title 按钮标题
+ * @param itemSize  按钮大小
+ * @param callback  按钮点击回调，注意：callback可能会导致循环引用，使用是请先处理
+ * @return 返回该按钮
+ */
+- (UIView *)addLeftItemWithTitle:(NSString *)title  size:(CGSize)itemSize callback:(void (^)(void))callback
+{
+    return [self addLeftItemWithTitle:title titleAttributes:nil size:itemSize leftMargin:10 callback:callback];
+}
+
+- (UIView *)addRightItemWithTitle:(NSString *)title size:(CGSize)itemSize callback:(void (^)(void))callback
+{
+    return [self addRightItemWithTitle:title titleAttributes:nil size:itemSize rightMargin:10 callback:callback];
+}
+
+/**
+ * 添加导航条文字按钮
+ *
+ * @param title 按钮标题
+ * @param itemSize  按钮大小
+ * @param margin 按钮的左间距或右间距
+ * @param callback  按钮点击回调，注意：callback可能会导致循环引用，使用是请先处理
+ * @return 返回该按钮
+ */
+- (UIView *)addLeftItemWithTitle:(NSString *)title
+                 titleAttributes:(NSDictionary <NSString *, id> *)attributes
+                            size:(CGSize)itemSize
+                      leftMargin:(CGFloat)margin
+                        callback:(void (^)(void))callback
+{
+    objc_setAssociatedObject(self, &kAWLeftItemCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if ( title.length == 0 || CGSizeEqualToSize(itemSize, CGSizeZero) ) {
+        self.navBar.leftItem = nil;
+        return nil;
+    } else {
+        UIButton *btn = CreateTextButtonWithSize(title, itemSize, self, @selector(aw_leftItemClick_10110:));
+        
+        if ( attributes[NSForegroundColorAttributeName] ) {
+            [btn setTitleColor:attributes[NSForegroundColorAttributeName] forState:UIControlStateNormal];
+        }
+        
+        if ( attributes[NSFontAttributeName] ) {
+            btn.titleLabel.font = attributes[NSFontAttributeName];
+        }
+        
+        self.navBar.leftItem = btn;
+        self.navBar.leftMarginOfLeftItem = margin;
+        return btn;
+    }
+}
+
+- (UIView *)addRightItemWithTitle:(NSString *)title
+                  titleAttributes:(NSDictionary <NSString *, id> *)attributes
+                             size:(CGSize)itemSize
+                      rightMargin:(CGFloat)margin
+                         callback:(void (^)(void))callback
+{
+    objc_setAssociatedObject(self, &kAWRightItemCallbackKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if ( title.length == 0 || CGSizeEqualToSize(itemSize, CGSizeZero) ) {
+        self.navBar.rightItem = nil;
+        return nil;
+    } else {
+        UIButton *btn = CreateTextButtonWithSize(title, itemSize, self, @selector(aw_rightItemClick_10110:));
+        
+        if ( attributes[NSForegroundColorAttributeName] ) {
+            [btn setTitleColor:attributes[NSForegroundColorAttributeName] forState:UIControlStateNormal];
+        }
+        
+        if ( attributes[NSFontAttributeName] ) {
+            btn.titleLabel.font = attributes[NSFontAttributeName];
+        }
+        
+        self.navBar.rightItem = btn;
+        self.navBar.rightMarginOfRightItem = margin;
+        return btn;
+    }
+}
+
+/**
+ * 添加导航条自定义视图
+ *
+ * @param aView 自定义视图
+ * @return
+ */
+- (void)addLeftItemWithView:(UIView *)aView
+{
+    if ( aView == nil ) {
+        self.navBar.leftItem = nil;
+    } else {
+        self.navBar.leftItem = aView;
+    }
+}
+
+- (void)addRightItemWithView:(UIView *)aView
+{
+    if ( aView == nil ) {
+        self.navBar.rightItem = nil;
+    } else {
+        self.navBar.rightItem = aView;
+    }
 }
 
 @end

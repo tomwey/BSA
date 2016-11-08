@@ -39,7 +39,7 @@
     
     self.navBar.title = @"换乘";
     
-    [self addLeftBarItemWithView:nil];
+    [self addLeftItemWithView:nil];
     
     self.contentView.backgroundColor = CONTENT_VIEW_BG_COLOR;
     

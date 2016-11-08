@@ -41,7 +41,7 @@
     
     self.navBar.title = @"互动广场";
     
-    [self addLeftBarItemWithView:nil];
+    [self addLeftItemWithView:nil];
     
     self.webView = [[UIWebView alloc] initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.webView];
