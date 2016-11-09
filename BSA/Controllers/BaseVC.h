@@ -13,8 +13,8 @@
 
 //@property (nonatomic, strong, readonly) UIView *contentView;
 
-- (void)startLoading:(void (^)(void))reloadCallback;
+//- (void)startLoading:(void (^)(void))reloadCallback;
 
-- (void)finishLoading:(LoadingState)state;
+//- (void)finishLoading:(LoadingState)state;
 
 @end

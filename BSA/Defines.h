@@ -154,6 +154,9 @@
 
 #import "UITextView+AWPlaceholder.h"
 
+#import "AWLoadingStateBaseView.h"
+#import "AWLoadingStateView.h"
+
 // Models
 #import "User.h"
 #import "Location.h"

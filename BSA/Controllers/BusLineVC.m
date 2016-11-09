@@ -60,7 +60,8 @@
         [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
         
         if ( error ) {
-            [self finishLoading:LoadingStateFail];
+//            [self finishLoading:LoadingStateFail];
+            [self finishLoading:AWLoadingStateFailure];
         } else {
             id transits = [[result objectForKey:@"route"] objectForKey:@"transits"];
             if ( transits && [transits isKindOfClass:[NSArray class]] ) {
@@ -68,7 +69,8 @@
                     self.dataSource.dataSource = transits;
                     [self.tableView reloadData];
                 } else {
-                    [self finishLoading:LoadingStateEmptyResult];
+//                    [self finishLoading:LoadingStateEmptyResult];
+                    [self finishLoading:AWLoadingStateEmptyResult];
                 }
                 
             }
