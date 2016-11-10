@@ -188,6 +188,19 @@ NSString* AWAppVersion()
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
+NSString *AWChinese2PinyinWithSpace(NSString *chinese, BOOL yesOrNo)
+{
+    CFStringRef hanzi = (__bridge CFStringRef)chinese;
+    CFMutableStringRef string = CFStringCreateMutableCopy(NULL, 0, hanzi);
+    CFStringTransform(string, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform(string, NULL, kCFStringTransformStripDiacritics, NO);
+    NSString *pinyin = (NSString *)CFBridgingRelease(string);
+    if ( !yesOrNo ) {
+        pinyin = [pinyin stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    return pinyin;
+}
+
 UIImage *AWImageFromColor(UIColor *imageColor)
 {
     CGRect rect = CGRectMake(0, 0, 1, 1);

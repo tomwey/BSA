@@ -59,7 +59,10 @@
         [self removeWebViewCompatity];
     }
     
-    [self startLoad];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self startLoad];
+    });
+    
 }
 
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

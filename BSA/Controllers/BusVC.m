@@ -50,6 +50,8 @@
     UIImageView *tickView = AWCreateImageView(nil);
     tickView.image = AWImageNoCached(@"ticket.png");
     [bgView addSubview:tickView];
+    [tickView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoTicket)]];
+    tickView.userInteractionEnabled = YES;
     
     CGFloat factor = tickView.image.size.height / tickView.image.size.width;
     bgView.frame = CGRectMake(0, headView.bottom + margin, self.contentView.width, self.contentView.width * factor);
@@ -68,6 +70,10 @@
         UIView *containerView = [[UIView alloc] init];
         [self.scrollView addSubview:containerView];
         containerView.backgroundColor = [UIColor whiteColor];
+        
+        containerView.tag = 1000 + i;
+        
+        [containerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
         
         static CGFloat width, height;
         static dispatch_once_t onceToken;
@@ -102,6 +108,28 @@
     }
     
     self.scrollView.contentSize = CGSizeMake(self.contentView.width, contentHeight);
+}
+
+- (void)tap:(UIGestureRecognizer *)gesture
+{
+    NSArray *h5Pages = @[
+                         @"booking.html",@"purchase.html",@"order_list.html",
+                         @"recruit.html",@"group.html",@"person.html",
+                         ];
+    NSArray *titles   = @[@"预约", @"订购", @"我的订单", @"参与招募",@"开行线路", @"个人需求"];
+    
+    NSInteger index = gesture.view.tag - 1000;
+    
+    NSString *url = [NSString stringWithFormat:@"%@/%@", H5_HOST, h5Pages[index]];
+    WebViewVC *page = [[WebViewVC alloc] initWithURL:[NSURL URLWithString:url] title:titles[index]];
+    [self.tabBarController.navigationController pushViewController:page animated:YES];
+}
+
+- (void)gotoTicket
+{
+    NSString *url = [NSString stringWithFormat:@"%@/ticket.html", H5_HOST];
+    WebViewVC *page = [[WebViewVC alloc] initWithURL:[NSURL URLWithString:url] title:@"电子车票"];
+    [self.tabBarController.navigationController pushViewController:page animated:YES];
 }
 
 - (BOOL)prefersStatusBarHidden

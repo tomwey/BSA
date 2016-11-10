@@ -95,6 +95,14 @@ UIWindow* AWCreateAppWindow(UIColor* bgColor);
 NSString* AWAppVersion();
 
 /**
+ * 汉子转拼音
+ *
+ * @param chinese 汉字
+ * @param yesOrNo 拼音之间是否用空格分隔
+ */
+NSString *AWChinese2PinyinWithSpace(NSString *chinese, BOOL yesOrNo);
+
+/**
  * 创建一个颜色图片
  */
 UIImage *AWImageFromColor(UIColor *imageColor);

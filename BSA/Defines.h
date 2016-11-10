@@ -63,13 +63,14 @@
 #define TRANSFER_URL          @"http://tdzh.cddzgj.com:9091/RTH/search.html"
 
 // 广场列表地址
-#define SQUARE_LIST_URL       @"http://tdzh.cddzgj.com:9091/RTH/squarelist.html"
+#define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/square.html"
 
 // 线路详情地址
 #define LINE_DETAIL_URL       @"http://tdzh.cddzgj.com:9091/lineDetails.html"
 
 ////// API接口
 #define API_HOST      @"http://182.150.21.101:9091/BSI/BSIWCF.svc"
+#define H5_HOST       @"http://dzh.cddzgj.com"
 
 #define API_KEY    @"27654725447"
 #define API_SECRET @"dfjhskdhsiwnvhkjhdguwnvbxmn"

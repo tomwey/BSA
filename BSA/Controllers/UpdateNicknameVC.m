@@ -23,6 +23,8 @@
     
     self.navBar.title = @"设置昵称";
     
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    
     AWTextField *textField = [[AWTextField alloc] initWithFrame:CGRectMake(15, 15,
                                                                            self.contentView.width - 30,
                                                                            37)];

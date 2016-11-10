@@ -24,26 +24,26 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)jsonResult
 {
-//    Birthday = "2016-10-14";
-//    HeadUrl = "http://182.150.21.101:9091/Images/tx.jpg";
-//    LoginName = 18380412156;
+//    AvatarImg = "http://182.150.21.101:9091/Images/tx.jpg";
+//    Brith = "";
+//    Email = "";
 //    Password = "";
-//    Sex = 1;
-//    Tel = 18380412156;
-//    UpdateTime = "<null>";
-//    UserID = "92977498-7787-4346-939c-fa97e19563ef";
-//    UserName = "\U5f20\U742a";
+//    RealName = "";
+//    Sex = "<null>";
+//    Token = "";
+//    UserID = 18048553687;
+//    Usertype = 0;
 //    resultdes = "\U6267\U884c\U6210\U529f";
 //    status = 101;
     if ( self = [super init] ) {
-        self.mobile = [jsonResult[@"LoginName"] description];
-        self.avatar = [jsonResult[@"HeadUrl"] description];
-        self.name = [jsonResult[@"UserName"] description];
+        self.mobile = [jsonResult[@"UserID"] description];
+        self.avatar = [jsonResult[@"AvatarImg"] description];
+        self.name = [jsonResult[@"RealName"] description];
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateFormat = @"yyyy-MM-dd";
         
-        self.birthday = [df dateFromString:[jsonResult[@"Birthday"] description]];
+        self.birthday = [df dateFromString:[jsonResult[@"Brith"] description]];
         
         self.sex = [[jsonResult[@"Sex"] description] isEqualToString:@"<null>"] ? nil: jsonResult[@"Sex"];
         
@@ -126,7 +126,7 @@
 
 - (NSString *)formatUsername
 {
-    if ( !self.name ) {
+    if ( !self.name || self.name.length == 0 ) {
         return [self hackMobile];
     }
     
