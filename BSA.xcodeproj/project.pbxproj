@@ -164,6 +164,8 @@
 		978344401DD2B2D30065334A /* AWLoadingStateBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9783443F1DD2B2D30065334A /* AWLoadingStateBaseView.m */; };
 		978344431DD2E4870065334A /* AWLoadingStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344421DD2E4870065334A /* AWLoadingStateView.m */; };
 		978344461DD2FFE00065334A /* AWLoadingResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344451DD2FFE00065334A /* AWLoadingResultView.m */; };
+		978344741DD469460065334A /* CommWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344731DD469460065334A /* CommWebViewVC.m */; };
+		978344771DD46C2A0065334A /* ApplyBusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344761DD46C2A0065334A /* ApplyBusVC.m */; };
 		978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69CC1DD169C00013E6B0 /* FeedbackVC.m */; };
 		978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */; };
 		978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */; };
@@ -481,6 +483,10 @@
 		978344421DD2E4870065334A /* AWLoadingStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWLoadingStateView.m; sourceTree = "<group>"; };
 		978344441DD2FFE00065334A /* AWLoadingResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWLoadingResultView.h; sourceTree = "<group>"; };
 		978344451DD2FFE00065334A /* AWLoadingResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWLoadingResultView.m; sourceTree = "<group>"; };
+		978344721DD469460065334A /* CommWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommWebViewVC.h; sourceTree = "<group>"; };
+		978344731DD469460065334A /* CommWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommWebViewVC.m; sourceTree = "<group>"; };
+		978344751DD46C2A0065334A /* ApplyBusVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyBusVC.h; sourceTree = "<group>"; };
+		978344761DD46C2A0065334A /* ApplyBusVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyBusVC.m; sourceTree = "<group>"; };
 		978B69CB1DD169C00013E6B0 /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
 		978B69CC1DD169C00013E6B0 /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
 		978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWDeallocBlock.h"; sourceTree = "<group>"; };
@@ -1346,6 +1352,10 @@
 				97CF19401DC2E5B500ED8A73 /* BusLineVC.m */,
 				97CF19451DC33D6B00ED8A73 /* BusLineDetailVC.h */,
 				97CF19461DC33D6B00ED8A73 /* BusLineDetailVC.m */,
+				978344721DD469460065334A /* CommWebViewVC.h */,
+				978344731DD469460065334A /* CommWebViewVC.m */,
+				978344751DD46C2A0065334A /* ApplyBusVC.h */,
+				978344761DD46C2A0065334A /* ApplyBusVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1974,6 +1984,7 @@
 				975820ED1DC6E4A800CA1476 /* CTPersistanceTable+Delete.m in Sources */,
 				97579AA61DBDF29C00D99981 /* DatePicker.m in Sources */,
 				975820F21DC6E4A800CA1476 /* CTPersistanceTransaction.m in Sources */,
+				978344771DD46C2A0065334A /* ApplyBusVC.m in Sources */,
 				97BF23D51DBD8E1C0009F46C /* WebViewVC.m in Sources */,
 				97F130DE1DAB18D300806E8A /* AFURLConnectionOperation.m in Sources */,
 				978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */,
@@ -2019,6 +2030,7 @@
 				97CF194A1DC343AF00ED8A73 /* WalkingView.m in Sources */,
 				97F130931DAB18C500806E8A /* APIError.m in Sources */,
 				978B69DB1DD1BAAD0013E6B0 /* WGS84ToGCJ02.m in Sources */,
+				978344741DD469460065334A /* CommWebViewVC.m in Sources */,
 				975820EC1DC6E4A700CA1476 /* CTPersistanceRecord.m in Sources */,
 				978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */,
 				975820E11DC6E4A700CA1476 /* CTPersistanceCriteria.m in Sources */,

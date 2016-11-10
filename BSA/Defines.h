@@ -59,8 +59,8 @@
 #define OFFICIAL_WECHAT_URL   @"http://tdzh.cddzgj.com:9091/weixin.html"
 #define FEEDBACK_URL          @"http://tdzh.cddzgj.com:9091/RTH/feedback.html"
 
-// 公交换乘地址
-#define TRANSFER_URL          @"http://tdzh.cddzgj.com:9091/RTH/search.html"
+// 我要包车
+#define APPLY_BUS_URL         @"http://tadi.adgom.cn:9091/BSH/carAppointment.html"
 
 // 广场列表地址
 #define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/square.html"

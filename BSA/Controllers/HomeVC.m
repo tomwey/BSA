@@ -90,6 +90,8 @@
         case 1:
         {
             // 我要包车
+            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"ApplyBusVC" params:nil];
+            [self.tabBarController.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
