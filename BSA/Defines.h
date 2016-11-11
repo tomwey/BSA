@@ -65,8 +65,8 @@
 // 广场列表地址
 #define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/square.html"
 
-// 线路详情地址
-#define LINE_DETAIL_URL       @"http://tdzh.cddzgj.com:9091/lineDetails.html"
+// 线路订购详情地址
+#define LINE_DETAIL_URL       @"http://tadi.adgom.cn:9091/BSH/ordering.html"
 
 ////// API接口
 #define API_HOST      @"http://182.150.21.101:9091/BSI/BSIWCF.svc"

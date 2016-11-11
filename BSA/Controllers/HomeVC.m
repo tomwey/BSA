@@ -9,13 +9,21 @@
 #import "HomeVC.h"
 #import "Defines.h"
 
-@interface HomeVC ()
+@interface HomeVC () <UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) AWTableViewDataSource *dataSource;
 
+@property (nonatomic, assign) NSUInteger currentPage;
+@property (nonatomic, assign) NSUInteger totalPage;
+@property (nonatomic, assign) NSUInteger pageSize;
+
+@property (nonatomic, assign) BOOL isLoadingNextPage;
+@property (nonatomic, assign) BOOL loading;
+
 @end
+
 @implementation HomeVC
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.currentPage = 1;
+    self.pageSize = 15;
     
     UIView *capitionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width,
                                                                     self.contentView.width * 0.4167)];
@@ -76,10 +87,17 @@
     self.tableView.backgroundColor = MAIN_BG_COLOR;
     
     self.tableView.dataSource = self.dataSource;
-    
+    self.tableView.delegate   = self;
     [self.tableView removeBlankCells];
     
     self.tableView.rowHeight = 156;
+    
+    __weak typeof(self) me = self;
+    [self.tableView addRefreshControlWithReloadCallback:^(UIRefreshControl *control) {
+        if ( control ) {
+            [me refreshLoad];
+        }
+    }];
     
     [self startLoad];
 }
@@ -112,73 +130,111 @@
 
 - (void)startLoad
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.dataSource.dataSource = @[@{},@{}];
-        [self.tableView reloadData];
-    });
+    if ( self.loading ) {
+        return;
+    }
+    
+    self.loading = YES;
+    
+    __weak typeof(self) me = self;
+    if ( self.currentPage == 1 ) {
+        [self startLoadingInView:self.tableView forStateViewClass:[AWLoadingStateView class] reloadCallback:^{
+            [me refreshLoad];
+        }];
+    } else {
+        // 加载更多的进度指示
+    }
+    
+    [self.dataService POST:@"GetBusLineOrderPublishResult" params:@{ @"pageindex": @(self.currentPage),
+                                                                     @"pagesize": @(self.pageSize)
+                                                                     }
+                completion:^(id result, NSError *error) {
+                    NSLog(@"result: %@\nError: %@", result, error);
+                    [me handleResult:result error: error];
+                }];
+}
+
+- (NSInteger)calcuTotalPage:(NSInteger)total
+{
+    if ( self.pageSize == 0 ) {
+        return 0;
+    }
+    
+    return (total + self.pageSize - 1) / self.pageSize;
+}
+
+- (void)handleResult:(id)result error:(NSError *)error
+{
+    self.loading = NO;
+    self.isLoadingNextPage = NO;
+    
+    if ( self.currentPage == 1 ) {
+        if ( error ) {
+            [self finishLoading:AWLoadingStateFailure];
+        } else {
+            NSArray *dataList = result[@"DataList"];
+            if ( [dataList count] == 0 ) {
+                [self finishLoading:AWLoadingStateEmptyResult];
+            } else {
+                NSInteger total = [result[@"Total"] integerValue];
+                self.totalPage = [self calcuTotalPage:total];
+                
+                self.dataSource.dataSource = dataList;
+                [self.tableView reloadData];
+                
+                [self finishLoading:AWLoadingStateSuccess];
+            }
+        }
+    } else {
+        if ( error ) {
+            [self.contentView makeToast:@"加载数据失败" duration:2.0 position:CSToastPositionBottom];
+        } else {
+            NSArray *dataList = result[@"DataList"];
+            
+            if ( [dataList count] == 0 ) {
+                [self.contentView makeToast:@"没有更多数据了" duration:2.0 position:CSToastPositionBottom];
+            } else {
+                NSMutableArray *array = [self.dataSource.dataSource mutableCopy];
+                [array addObjectsFromArray:dataList];
+                
+                self.dataSource.dataSource = array;
+                [self.tableView reloadData];
+            }
+        }
+    }
+}
+
+- (void)refreshLoad
+{
+    self.currentPage = 1;
+    
+    [self startLoad];
+}
+
+- (void)loadNextPage
+{
+    if ( self.currentPage < self.totalPage ) {
+        self.currentPage ++;
+        
+        [self startLoad];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ( !self.isLoadingNextPage &&
+        self.totalPage > self.currentPage &&
+        indexPath.row == self.dataSource.dataSource.count - 1 ) {
+        self.isLoadingNextPage = YES;
+        
+        [self loadNextPage];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-}
-
-- (void)startLocation
-{
-    [[AWLocationManager sharedInstance] startUpdatingLocation:^(CLLocation *location, NSError *error) {
-        if ( error ) {
-            NSLog(@"获取位置失败：%@", error);
-//            self.stationNameLabel.text = @"定位失败";
-        } else {
-            NSLog(@"%@", location.description);
-            [self startFetchStation];
-        }
-    }];
-}
-
-- (void)startFetchStation
-{
-    NSString *lng_lat = [[AWLocationManager sharedInstance] formatedCurrentLocation_1];
-    
-    __weak typeof(self) me = self;
-    [self.dataService POST:GET_STATION_BY_LNG_AND_LAT
-                    params:@{ @"lng": [[lng_lat componentsSeparatedByString:@","] firstObject],
-                              @"lat": [[lng_lat componentsSeparatedByString:@","] lastObject] }
-                completion:^(id result, NSError *error) {
-                    if ( error ) {
-                        NSLog(@"获取站点失败：%@", error);
-//                        self.stationNameLabel.text = @"站点获取失败";
-                    } else {
-//                        me.stationId = result[@"StationID"];
-//                        me.stationNameLabel.text = [result[@"StationName"] description];
-                        [me startFetchBusForLngAndLat:lng_lat];
-                    }
-                }];
-}
-
-- (void)startFetchBusForLngAndLat:(NSString *)lngAndLat
-{
-//    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
-//    
-//    __weak typeof(self) me = self;
-//    [self.dataService POST:GET_BUS_LINE_QUERY_RESULT params:@{ @"stationid": self.stationId,
-//                                                               @"lng": [[lngAndLat componentsSeparatedByString:@","] firstObject],
-//                                                               @"lat":[[lngAndLat componentsSeparatedByString:@","] lastObject]
-//                                                               } completion:^(id result, NSError *error) {
-//                                                                   [MBProgressHUD hideHUDForView:me.contentView animated:YES];
-//                                                                   [me handleLoadCompletion:result error:error];
-//                                                               }];
-}
-
-- (void)handleLoadCompletion:(id)result error:(NSError *)error
-{
-    [self.tableView finishLoading];
-    
-    if ( !error ) {
-        self.dataSource.dataSource = result[@"DataList"];
-        self.tableView.hidden = NO;
-        [self.tableView reloadData];
-    }
 }
 
 - (AWTableViewDataSource *)dataSource
@@ -188,12 +244,11 @@
         
         __weak typeof(self) me = self;
         _dataSource.itemDidSelectBlock = ^(UIView<AWTableDataConfig> *sender, id selectedData) {
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?stationid=%@&lineno=%@&lineType=%@",
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?lineno=%@&monthtype=%@",
                                                LINE_DETAIL_URL,
-                                               [selectedData valueForKey:@"StationID"],
-                                               [[[selectedData valueForKey:@"BusLine"] description] trim],
-                                               [selectedData valueForKey:@"LineType"]]];
-            WebViewVC *page = [[WebViewVC alloc] initWithURL:url title:@"路线详情"];
+                                               [selectedData valueForKey:@"LineNo"],
+                                               [selectedData valueForKey:@"MonthType"]]];
+            WebViewVC *page = [[WebViewVC alloc] initWithURL:url title:@"线路订购详情"];
             [me.tabBarController.navigationController pushViewController:page animated:YES];
         };
     }

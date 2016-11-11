@@ -72,42 +72,85 @@
 - (void)configData:(id)data selectBlock:(void (^)(UIView<AWTableDataConfig> *sender, id selectedData))selectBlock
 {
     NSLog(@"data: %@", data);
-    
+//    {
+//        BaseData = 0;
+//        BeginTime = "07:50";
+//        BusNo = "<null>";
+//        BusType = "\U5927\U578b\U5ba2\U8f66";
+//        CarrierNo = 0;
+//        CouponPrice = "<null>";
+//        CouponValue = "<null>";
+//        CurrentPrice = "<null>";
+//        DistanceMileage = 0;
+//        DistanceTime = 0;
+//        EndTime = "08:45";
+//        LeastTicket = 34;
+//        LineInfo = "<null>";
+//        LineName = "\U5353\U9526\U57ce-\U5929\U5e9c\U8f6f\U4ef6\U56ed";
+//        LineNo = B006;
+//        MaxPrice = 0;
+//        MinPrice = 0;
+//        Month = 12;
+//        MonthType = 1;
+//        OrderedCount = 0;
+//        PrimePrice = "<null>";
+//        PublishTime = "<null>";
+//        RedunNo = 0;
+//        RemainderNo = 0;
+//        SalesPackageID = "<null>";
+//        SalesPackageValue = 0;
+//        StartStation = "\U6d77\U68e0\U8def\U559c\U6811\U8857\U53e3";
+//        StartTime = "<null>";
+//        StopStation = "\U5929\U534e\U4e8c\U8def";
+//        StopTime = "<null>";
+//        TimeName = "48\U592919\U5c0f\U65f634\U5206\U949f";
+//        TimeType = 2;
+//        VipData = 0;
+//        Year = 2016;
+//    }
     self.selectedData = data;
     self.didSelectBlock = selectBlock;
     
     // 设置班车编号
-    self.busNoLabel.text = @"B006";
+    self.busNoLabel.text = [[data valueForKey:@"LineNo"] description];
     
     // 设置班车开行年月
-    NSString *string = @"11月\n2016年";
+    NSString *string = [NSString stringWithFormat:@"%@月\n%@年",
+                        [data valueForKey:@"Month"],
+                        [data valueForKey:@"Year"]
+                        ];
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:string];
     NSRange range = [string rangeOfString:@"月"];
     [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(22, NO) }
                       range:NSMakeRange(0, range.location)];
     self.onlineDateLabel.attributedText = attrText;
     
+//    LineName
+    NSArray *lineNames = [[[data valueForKey:@"LineName"] description] componentsSeparatedByString:@"-"];
+    
     // 设置始发站信息
-    self.startNameLabel.text = @"卓锦城";
-    self.startAddressLabel.text = @"海棠路喜树街";
-    self.startTimeLabel.text = @"7:50";
+    self.startNameLabel.text = [lineNames firstObject];
+    self.startAddressLabel.text = [[data valueForKey:@"StartStation"] description];
+    self.startTimeLabel.text = [[data valueForKey:@"BeginTime"] description];
     
     // 设置终到站信息
-    self.endNameLabel.text = @"天府软件园";
-    self.endAddressLabel.text = @"天华二路";
-    self.endTimeLabel.text = @"8:40";
+    self.endNameLabel.text = [lineNames lastObject];
+    self.endAddressLabel.text = [[data valueForKey:@"StopStation"] description];
+    self.endTimeLabel.text = [[data valueForKey:@"EndTime"] description];
     
     // 班车简介
-    self.busIntroLabel.text = @"豪华大巴45座";
+    self.busIntroLabel.text = [[data valueForKey:@"BusType"] description];
     
     // 余票
-    attrText = [[NSMutableAttributedString alloc] initWithString:@"余26张"];
+    NSString *leftTicket = [NSString stringWithFormat:@"余%@张", [data valueForKey: @"LeastTicket"]];
+    attrText = [[NSMutableAttributedString alloc] initWithString:leftTicket];
     [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(22, NO), NSForegroundColorAttributeName: self.startNameLabel.textColor }
                       range:NSMakeRange(1, attrText.string.length - 2)];
     self.leftTicketsLabel.attributedText = attrText;
     
     // 预定时间提醒
-    attrText = [[NSMutableAttributedString alloc] initWithString:@"还有18小时订购结束"];
+    NSString *timeReminder = [NSString stringWithFormat:@"还有%@订购结束", [data valueForKey:@"TimeName"]];
+    attrText = [[NSMutableAttributedString alloc] initWithString:timeReminder];
     [attrText addAttributes:@{ NSForegroundColorAttributeName: AWColorFromRGB(247, 152, 39) }
                       range:NSMakeRange(2, attrText.string.length - 6)];
     self.orderTimeTipLabel.attributedText = attrText;

@@ -58,6 +58,13 @@
     [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
+ navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"type: %d, %@", navigationType, request);
+    return YES;
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
