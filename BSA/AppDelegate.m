@@ -40,6 +40,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    // fixed UIWebView local storage not working
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"WebKitStoreWebDataForBackup"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     // 设置缓存大小
     NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
                                                          diskCapacity:100 * 1024 * 1024

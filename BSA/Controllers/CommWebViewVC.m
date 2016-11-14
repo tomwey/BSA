@@ -48,10 +48,11 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    return [self handleRequest:request forWebView:webView];
+    return [self handleRequest:request navigationType:navigationType];
 }
 
-- (BOOL)handleRequest:(NSURLRequest *)request forWebView:(UIWebView *)webView
+- (BOOL)handleRequest:(NSURLRequest *)request
+       navigationType:(UIWebViewNavigationType)navigationType
 {
     return YES;
 }

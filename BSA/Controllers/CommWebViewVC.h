@@ -7,11 +7,15 @@
 //
 
 #import "BaseNavBarVC.h"
+#import "UIWebView+KeyValueStorage.h"
 
 @interface CommWebViewVC : BaseNavBarVC
 
+@property (nonatomic, strong, readonly) UIWebView *webView;
+
 - (NSString *)pageUrl;
 
-- (BOOL)handleRequest:(NSURLRequest *)request forWebView:(UIWebView *)webView;
+- (BOOL)handleRequest:(NSURLRequest *)request
+       navigationType:(UIWebViewNavigationType)navigationType;
 
 @end

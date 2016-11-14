@@ -246,12 +246,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         __weak typeof(self) me = self;
         _dataSource.itemDidSelectBlock = ^(UIView<AWTableDataConfig> *sender, id selectedData) {
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?lineno=%@&monthtype=%@",
-                                               LINE_DETAIL_URL,
-                                               [selectedData valueForKey:@"LineNo"],
-                                               [selectedData valueForKey:@"MonthType"]]];
-            WebViewVC *page = [[WebViewVC alloc] initWithURL:url title:@"线路订购详情"];
-            [me.tabBarController.navigationController pushViewController:page animated:YES];
+            NSString *url = [NSString stringWithFormat:@"%@?lineno=%@&monthtype=%@",
+                             LINE_DETAIL_URL,
+                             [selectedData valueForKey:@"LineNo"],
+                             [selectedData valueForKey:@"MonthType"]];
+            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC" params:@{ @"pageUrl": url,
+                                                                                                       @"title": @"线路订购详情"}];
+            [me.tabBarController.navigationController pushViewController:vc animated:YES];
+            
+//            WebViewVC *page = [[WebViewVC alloc] initWithURL:url title:@"线路订购详情"];
+//            [me.tabBarController.navigationController pushViewController:page animated:YES];
         };
     }
     return _dataSource;
