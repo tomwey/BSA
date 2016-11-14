@@ -168,6 +168,8 @@
     self.loading = NO;
     self.isLoadingNextPage = NO;
     
+    [self.tableView finishLoading];
+    
     if ( self.currentPage == 1 ) {
         if ( error ) {
             [self finishLoading:AWLoadingStateFailure];

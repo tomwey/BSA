@@ -121,7 +121,7 @@
                         ];
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:string];
     NSRange range = [string rangeOfString:@"月"];
-    [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(22, NO) }
+    [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(20, NO) }
                       range:NSMakeRange(0, range.location)];
     self.onlineDateLabel.attributedText = attrText;
     
@@ -144,7 +144,7 @@
     // 余票
     NSString *leftTicket = [NSString stringWithFormat:@"余%@张", [data valueForKey: @"LeastTicket"]];
     attrText = [[NSMutableAttributedString alloc] initWithString:leftTicket];
-    [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(22, NO), NSForegroundColorAttributeName: self.startNameLabel.textColor }
+    [attrText addAttributes:@{ NSFontAttributeName: AWSystemFontWithSize(20, NO), NSForegroundColorAttributeName: self.startNameLabel.textColor }
                       range:NSMakeRange(1, attrText.string.length - 2)];
     self.leftTicketsLabel.attributedText = attrText;
     
@@ -163,7 +163,7 @@
     self.containerView.frame = CGRectMake(0, 15, self.width, self.height - 15);
     
     CGFloat padding = 15;
-    self.busNoLabel.frame = CGRectMake(padding, padding, 66, 34);
+    self.busNoLabel.frame = CGRectMake(padding, padding, 50, 30);
     
     self.onlineDateLabel.frame = CGRectMake(0, 0, self.busNoLabel.width, 60);
     self.onlineDateLabel.top = self.containerView.height - 15 - self.onlineDateLabel.height;
@@ -184,7 +184,7 @@
     self.startTimeLabel.top   = self.startAddressLabel.bottom + 5;
     
     // 水平线
-    self.horizontalLine.center = CGPointMake(self.startNameLabel.right + 5 + self.horizontalLine.width / 2,
+    self.horizontalLine.center = CGPointMake(self.startNameLabel.right - 10 + self.horizontalLine.width / 2,
                                              self.startNameLabel.midY);
     
     // 垂直线1
@@ -245,7 +245,7 @@
         _busNoLabel = AWCreateLabel(CGRectZero,
                                     nil,
                                     NSTextAlignmentCenter,
-                                    AWSystemFontWithSize(16, NO),
+                                    AWSystemFontWithSize(15, NO),
                                     [UIColor whiteColor]);
         [self.containerView addSubview:_busNoLabel];
         _busNoLabel.backgroundColor = MAIN_BLUE_COLOR;
@@ -273,7 +273,7 @@
         _startNameLabel = AWCreateLabel(CGRectZero,
                                         nil,
                                         NSTextAlignmentLeft,
-                                        AWSystemFontWithSize(18, NO),
+                                        AWSystemFontWithSize(16, NO),
                                         AWColorFromRGB(39, 39, 39));
         [self.containerView addSubview:_startNameLabel];
     }
@@ -286,7 +286,7 @@
         _startAddressLabel = AWCreateLabel(CGRectZero,
                                        nil,
                                        NSTextAlignmentLeft,
-                                       AWSystemFontWithSize(14, YES),
+                                       AWSystemFontWithSize(13, YES),
                                        AWColorFromRGB(135, 135, 135));
         [self.containerView addSubview:_startAddressLabel];
     }
@@ -325,7 +325,7 @@
         _endAddressLabel = AWCreateLabel(CGRectZero,
                                            nil,
                                            NSTextAlignmentLeft,
-                                           AWSystemFontWithSize(14, YES),
+                                           AWSystemFontWithSize(13, YES),
                                            AWColorFromRGB(135, 135, 135));
         [self.containerView addSubview:_endAddressLabel];
     }
@@ -351,7 +351,7 @@
         _busIntroLabel = AWCreateLabel(CGRectZero,
                                          nil,
                                          NSTextAlignmentLeft,
-                                         AWSystemFontWithSize(14, YES),
+                                         AWSystemFontWithSize(13, YES),
                                          AWColorFromRGB(135, 135, 135));
         [self.containerView addSubview:_busIntroLabel];
     }
@@ -364,7 +364,7 @@
         _orderTimeTipLabel = AWCreateLabel(CGRectZero,
                                        nil,
                                        NSTextAlignmentRight,
-                                       AWSystemFontWithSize(14, YES),
+                                       AWSystemFontWithSize(13, YES),
                                        AWColorFromRGB(135, 135, 135));
         [self.containerView addSubview:_orderTimeTipLabel];
     }
