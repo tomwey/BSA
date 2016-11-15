@@ -166,7 +166,8 @@
 		978344461DD2FFE00065334A /* AWLoadingResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344451DD2FFE00065334A /* AWLoadingResultView.m */; };
 		978344741DD469460065334A /* CommWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344731DD469460065334A /* CommWebViewVC.m */; };
 		978344771DD46C2A0065334A /* ApplyBusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344761DD46C2A0065334A /* ApplyBusVC.m */; };
-		978A8E0E1DD9B71F001EA335 /* UIWebView+KeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E0D1DD9B71F001EA335 /* UIWebView+KeyValueStorage.m */; };
+		978A8E121DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E111DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m */; };
+		978A8E151DDACCFC001EA335 /* UIWebView+KeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E141DDACCFC001EA335 /* UIWebView+KeyValueStorage.m */; };
 		978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69CC1DD169C00013E6B0 /* FeedbackVC.m */; };
 		978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */; };
 		978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */; };
@@ -489,8 +490,10 @@
 		978344731DD469460065334A /* CommWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommWebViewVC.m; sourceTree = "<group>"; };
 		978344751DD46C2A0065334A /* ApplyBusVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyBusVC.h; sourceTree = "<group>"; };
 		978344761DD46C2A0065334A /* ApplyBusVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyBusVC.m; sourceTree = "<group>"; };
-		978A8E0C1DD9B71F001EA335 /* UIWebView+KeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+KeyValueStorage.h"; sourceTree = "<group>"; };
-		978A8E0D1DD9B71F001EA335 /* UIWebView+KeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+KeyValueStorage.m"; sourceTree = "<group>"; };
+		978A8E101DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+RemoveGrayBackground.h"; sourceTree = "<group>"; };
+		978A8E111DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+RemoveGrayBackground.m"; sourceTree = "<group>"; };
+		978A8E131DDACCFC001EA335 /* UIWebView+KeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+KeyValueStorage.h"; sourceTree = "<group>"; };
+		978A8E141DDACCFC001EA335 /* UIWebView+KeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+KeyValueStorage.m"; sourceTree = "<group>"; };
 		978B69CB1DD169C00013E6B0 /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
 		978B69CC1DD169C00013E6B0 /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
 		978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWDeallocBlock.h"; sourceTree = "<group>"; };
@@ -1158,6 +1161,17 @@
 			path = AWLoadingStateView;
 			sourceTree = "<group>";
 		};
+		978A8E0F1DDACC46001EA335 /* UIWebViewAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				978A8E101DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.h */,
+				978A8E111DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m */,
+				978A8E131DDACCFC001EA335 /* UIWebView+KeyValueStorage.h */,
+				978A8E141DDACCFC001EA335 /* UIWebView+KeyValueStorage.m */,
+			);
+			path = UIWebViewAdditions;
+			sourceTree = "<group>";
+		};
 		978B69CE1DD16A0F0013E6B0 /* AWDeallocBlock */ = {
 			isa = PBXGroup;
 			children = (
@@ -1411,8 +1425,6 @@
 		97F130081DAB162B00806E8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				978A8E0C1DD9B71F001EA335 /* UIWebView+KeyValueStorage.h */,
-				978A8E0D1DD9B71F001EA335 /* UIWebView+KeyValueStorage.m */,
 				97069FB61DCC60080081668B /* BannerView.h */,
 				97069FB71DCC60080081668B /* BannerView.m */,
 				97F130F51DAB1BE000806E8A /* LoadingView.h */,
@@ -1440,6 +1452,7 @@
 		97F130391DAB18C500806E8A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				978A8E0F1DDACC46001EA335 /* UIWebViewAdditions */,
 				9783443D1DD2B2A90065334A /* AWLoadingStateView */,
 				978B69CE1DD16A0F0013E6B0 /* AWDeallocBlock */,
 				978B69D11DD16A0F0013E6B0 /* AWTextView */,
@@ -2033,7 +2046,6 @@
 				975820E81DC6E4A700CA1476 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				97F130DC1DAB18D300806E8A /* AFNetworkReachabilityManager.m in Sources */,
 				97F130FA1DAB1C8800806E8A /* HomeVC.m in Sources */,
-				978A8E0E1DD9B71F001EA335 /* UIWebView+KeyValueStorage.m in Sources */,
 				97579AB51DBF2FD700D99981 /* UITableView+RefreshControl.m in Sources */,
 				97F130E01DAB18D300806E8A /* AFURLResponseSerialization.m in Sources */,
 				97AC4CA61DBDC73500DBBA74 /* UserVC.m in Sources */,
@@ -2043,6 +2055,7 @@
 				978B69DB1DD1BAAD0013E6B0 /* WGS84ToGCJ02.m in Sources */,
 				978344741DD469460065334A /* CommWebViewVC.m in Sources */,
 				975820EC1DC6E4A700CA1476 /* CTPersistanceRecord.m in Sources */,
+				978A8E151DDACCFC001EA335 /* UIWebView+KeyValueStorage.m in Sources */,
 				978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */,
 				975820E11DC6E4A700CA1476 /* CTPersistanceCriteria.m in Sources */,
 				97F130EB1DAB18D300806E8A /* UIWebView+AFNetworking.m in Sources */,
@@ -2085,6 +2098,7 @@
 				97F130951DAB18C500806E8A /* APIManager.m in Sources */,
 				97F131851DAB2F5E00806E8A /* SettingTableHeader.m in Sources */,
 				97F159A01DD9A41F0001FC81 /* BusOrderVC.m in Sources */,
+				978A8E121DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m in Sources */,
 				97CF18631DC05FF300ED8A73 /* AppInfo.m in Sources */,
 				975820E41DC6E4A700CA1476 /* CTPersistanceMigrator.m in Sources */,
 				97F130961DAB18C500806E8A /* APIRequest.m in Sources */,

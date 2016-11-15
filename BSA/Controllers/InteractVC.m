@@ -47,6 +47,7 @@
     [self.contentView addSubview:self.webView];
     self.webView.delegate = self;
     
+    [self.webView removeGrayBackground];
 //    self.webView.backgroundColor = [UIColor redColor];
     
 //    self.webView.scrollView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);

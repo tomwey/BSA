@@ -28,6 +28,8 @@
     
     self.webView.delegate = self;
     
+    [self.webView removeGrayBackground];
+    
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self pageUrl]]]];
 }
 

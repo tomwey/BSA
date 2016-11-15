@@ -164,12 +164,13 @@
 
 - (void)clearCache
 {
-    [[MBProgressHUD showHUDAddedTo:self.contentView animated:YES] setLabelText:@"缓存清除中..."];
+    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.contentView animated:YES];
+            [self.tableView reloadData];
         });
     });
 }

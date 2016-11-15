@@ -112,6 +112,8 @@
 {
     [textField resignFirstResponder];
     
+    [self doLogin];
+    
     return YES;
 }
 
