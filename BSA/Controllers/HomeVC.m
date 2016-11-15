@@ -115,7 +115,13 @@
         case 1:
         {
             // 我的车票
-            
+            if ( ![[UserService sharedInstance] currentUser] ) {
+                UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
+                [self.tabBarController.navigationController pushViewController:vc animated:YES];
+            } else {
+                UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"TicketsListVC" params:nil];
+                [self.tabBarController.navigationController pushViewController:vc animated:YES];
+            }
         }
             break;
         case 2:

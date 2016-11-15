@@ -173,6 +173,12 @@
 		978A8E1C1DDAD253001EA335 /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E1B1DDAD253001EA335 /* OrderListVC.m */; };
 		978A8E1F1DDAD2ED001EA335 /* CouponVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E1E1DDAD2ED001EA335 /* CouponVC.m */; };
 		978A8E221DDAD523001EA335 /* CouponGetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E211DDAD523001EA335 /* CouponGetVC.m */; };
+		978A8E251DDADC53001EA335 /* TicketsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E241DDADC53001EA335 /* TicketsListVC.m */; };
+		978A8E281DDAE573001EA335 /* TripListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E271DDAE573001EA335 /* TripListVC.m */; };
+		978A8E2B1DDAE5AE001EA335 /* ContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E2A1DDAE5AE001EA335 /* ContactVC.m */; };
+		978A8E2E1DDAE74F001EA335 /* add_trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 978A8E2C1DDAE74F001EA335 /* add_trip@2x.png */; };
+		978A8E2F1DDAE74F001EA335 /* add_trip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 978A8E2D1DDAE74F001EA335 /* add_trip@3x.png */; };
+		978A8E321DDAE7EA001EA335 /* AddTripVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E311DDAE7EA001EA335 /* AddTripVC.m */; };
 		978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69CC1DD169C00013E6B0 /* FeedbackVC.m */; };
 		978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */; };
 		978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */; };
@@ -507,6 +513,16 @@
 		978A8E1E1DDAD2ED001EA335 /* CouponVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponVC.m; sourceTree = "<group>"; };
 		978A8E201DDAD523001EA335 /* CouponGetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponGetVC.h; sourceTree = "<group>"; };
 		978A8E211DDAD523001EA335 /* CouponGetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponGetVC.m; sourceTree = "<group>"; };
+		978A8E231DDADC53001EA335 /* TicketsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketsListVC.h; sourceTree = "<group>"; };
+		978A8E241DDADC53001EA335 /* TicketsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketsListVC.m; sourceTree = "<group>"; };
+		978A8E261DDAE573001EA335 /* TripListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListVC.h; sourceTree = "<group>"; };
+		978A8E271DDAE573001EA335 /* TripListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListVC.m; sourceTree = "<group>"; };
+		978A8E291DDAE5AE001EA335 /* ContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactVC.h; sourceTree = "<group>"; };
+		978A8E2A1DDAE5AE001EA335 /* ContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactVC.m; sourceTree = "<group>"; };
+		978A8E2C1DDAE74F001EA335 /* add_trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_trip@2x.png"; sourceTree = "<group>"; };
+		978A8E2D1DDAE74F001EA335 /* add_trip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_trip@3x.png"; sourceTree = "<group>"; };
+		978A8E301DDAE7EA001EA335 /* AddTripVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripVC.h; sourceTree = "<group>"; };
+		978A8E311DDAE7EA001EA335 /* AddTripVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripVC.m; sourceTree = "<group>"; };
 		978B69CB1DD169C00013E6B0 /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
 		978B69CC1DD169C00013E6B0 /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
 		978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWDeallocBlock.h"; sourceTree = "<group>"; };
@@ -1089,6 +1105,8 @@
 		975821871DC9943800CA1476 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				978A8E2C1DDAE74F001EA335 /* add_trip@2x.png */,
+				978A8E2D1DDAE74F001EA335 /* add_trip@3x.png */,
 				97069FD81DCC775A0081668B /* icon_integration_t@3x.png */,
 				97069FD91DCC775A0081668B /* icon_integration_t@2x.png */,
 				97069FDA1DCC775A0081668B /* icon_integration_d@3x.png */,
@@ -1399,6 +1417,14 @@
 				978A8E1E1DDAD2ED001EA335 /* CouponVC.m */,
 				978A8E201DDAD523001EA335 /* CouponGetVC.h */,
 				978A8E211DDAD523001EA335 /* CouponGetVC.m */,
+				978A8E231DDADC53001EA335 /* TicketsListVC.h */,
+				978A8E241DDADC53001EA335 /* TicketsListVC.m */,
+				978A8E261DDAE573001EA335 /* TripListVC.h */,
+				978A8E271DDAE573001EA335 /* TripListVC.m */,
+				978A8E291DDAE5AE001EA335 /* ContactVC.h */,
+				978A8E2A1DDAE5AE001EA335 /* ContactVC.m */,
+				978A8E301DDAE7EA001EA335 /* AddTripVC.h */,
+				978A8E311DDAE7EA001EA335 /* AddTripVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1957,6 +1983,7 @@
 				97069F9E1DCC2B970081668B /* dzbus_selected@3x.png in Resources */,
 				97069FBE1DCC66F90081668B /* ticket.png in Resources */,
 				975822121DC9943800CA1476 /* icon_user@2x.png in Resources */,
+				978A8E2E1DDAE74F001EA335 /* add_trip@2x.png in Resources */,
 				97069FD01DCC6C270081668B /* purchase@2x.png in Resources */,
 				97069FCE1DCC6C270081668B /* dzorder@2x.png in Resources */,
 				97069FA11DCC2B970081668B /* mine_selected@2x.png in Resources */,
@@ -1991,6 +2018,7 @@
 				9758220C1DC9943800CA1476 /* icon_search@2x.png in Resources */,
 				975821E71DC9943800CA1476 /* btn_qq@2x.png in Resources */,
 				975822141DC9943800CA1476 /* icon_version.png in Resources */,
+				978A8E2F1DDAE74F001EA335 /* add_trip@3x.png in Resources */,
 				975821E81DC9943800CA1476 /* btn_qq@3x.png in Resources */,
 				975821F71DC9943800CA1476 /* icon_clear@2x.png in Resources */,
 				975822061DC9943800CA1476 /* icon_phone.png in Resources */,
@@ -2101,10 +2129,12 @@
 				97F131001DAB1CAE00806E8A /* InteractVC.m in Sources */,
 				978A8E1F1DDAD2ED001EA335 /* CouponVC.m in Sources */,
 				978344431DD2E4870065334A /* AWLoadingStateView.m in Sources */,
+				978A8E251DDADC53001EA335 /* TicketsListVC.m in Sources */,
 				97F130FD1DAB1C9600806E8A /* InquireVC.m in Sources */,
 				975820F11DC6E4A800CA1476 /* CTPersistanceTable.m in Sources */,
 				975820E71DC6E4A700CA1476 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				975820DF1DC6E4A700CA1476 /* NSString+ReqularExpression.m in Sources */,
+				978A8E321DDAE7EA001EA335 /* AddTripVC.m in Sources */,
 				97F130A41DAB18C500806E8A /* UIScrollView+AWRefresh.m in Sources */,
 				97F130971DAB18C500806E8A /* UIButton+AWButtonLoading.m in Sources */,
 				97F130991DAB18C500806E8A /* NSDataAdditions.m in Sources */,
@@ -2121,7 +2151,9 @@
 				975820E01DC6E4A700CA1476 /* NSString+SQL.m in Sources */,
 				97F130A01DAB18C500806E8A /* AWKeyboardManager.m in Sources */,
 				97F130951DAB18C500806E8A /* APIManager.m in Sources */,
+				978A8E281DDAE573001EA335 /* TripListVC.m in Sources */,
 				97F131851DAB2F5E00806E8A /* SettingTableHeader.m in Sources */,
+				978A8E2B1DDAE5AE001EA335 /* ContactVC.m in Sources */,
 				97F159A01DD9A41F0001FC81 /* BusOrderVC.m in Sources */,
 				978A8E121DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m in Sources */,
 				97CF18631DC05FF300ED8A73 /* AppInfo.m in Sources */,

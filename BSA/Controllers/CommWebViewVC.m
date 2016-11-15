@@ -38,12 +38,21 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self startLoadingInView:self.contentView
-           forStateViewClass:[AWLoadingStateView class]
-              reloadCallback:^{
-                  
-              }];
+    if ( [self shouldShowLoadingIndicator] ) {
+        __weak typeof(self) me = self;
+        [self startLoadingInView:self.contentView
+               forStateViewClass:[AWLoadingStateView class]
+                  reloadCallback:^{
+                      [me.webView reload];
+                  }];
+    }
+    
 //    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
+}
+
+- (BOOL)shouldShowLoadingIndicator
+{
+    return YES;
 }
 
 - (NSString *)pageUrl

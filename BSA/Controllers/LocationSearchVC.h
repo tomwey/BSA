@@ -6,8 +6,8 @@
 //  Copyright © 2016 tomwey. All rights reserved.
 //
 
-#import "BaseNavBarVC.h"
+#import "CommWebViewVC.h"
 
-@interface LocationSearchVC : BaseNavBarVC
+@interface LocationSearchVC : CommWebViewVC
 
 @end

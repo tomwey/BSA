@@ -15,6 +15,8 @@
 
 - (NSString *)pageUrl;
 
+- (BOOL)shouldShowLoadingIndicator;
+
 - (BOOL)handleRequest:(NSURLRequest *)request
        navigationType:(UIWebViewNavigationType)navigationType;
 

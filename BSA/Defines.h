@@ -79,6 +79,9 @@
 // 线路订购详情地址
 #define LINE_DETAIL_URL       @"http://tadi.adgom.cn:9091/BSH/ordering.html"
 
+// 添加行程
+#define ADD_TRIP_URL          @"http://tadi.adgom.cn:9091/BSH/addTrip.html"
+
 ////// API接口
 #define API_HOST      @"http://182.150.21.101:9091/BSI/BSIWCF.svc"
 #define H5_HOST       @"http://dzh.cddzgj.com"
