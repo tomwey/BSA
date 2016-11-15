@@ -168,6 +168,11 @@
 		978344771DD46C2A0065334A /* ApplyBusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978344761DD46C2A0065334A /* ApplyBusVC.m */; };
 		978A8E121DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E111DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m */; };
 		978A8E151DDACCFC001EA335 /* UIWebView+KeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E141DDACCFC001EA335 /* UIWebView+KeyValueStorage.m */; };
+		978A8E181DDAD03B001EA335 /* ticket_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 978A8E161DDAD03B001EA335 /* ticket_b@2x.png */; };
+		978A8E191DDAD03B001EA335 /* ticket_b@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 978A8E171DDAD03B001EA335 /* ticket_b@3x.png */; };
+		978A8E1C1DDAD253001EA335 /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E1B1DDAD253001EA335 /* OrderListVC.m */; };
+		978A8E1F1DDAD2ED001EA335 /* CouponVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E1E1DDAD2ED001EA335 /* CouponVC.m */; };
+		978A8E221DDAD523001EA335 /* CouponGetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978A8E211DDAD523001EA335 /* CouponGetVC.m */; };
 		978B69CD1DD169C00013E6B0 /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69CC1DD169C00013E6B0 /* FeedbackVC.m */; };
 		978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D01DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m */; };
 		978B69D51DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 978B69D31DD16A0F0013E6B0 /* UITextView+AWPlaceholder.m */; };
@@ -494,6 +499,14 @@
 		978A8E111DDACC6C001EA335 /* UIWebView+RemoveGrayBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+RemoveGrayBackground.m"; sourceTree = "<group>"; };
 		978A8E131DDACCFC001EA335 /* UIWebView+KeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+KeyValueStorage.h"; sourceTree = "<group>"; };
 		978A8E141DDACCFC001EA335 /* UIWebView+KeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+KeyValueStorage.m"; sourceTree = "<group>"; };
+		978A8E161DDAD03B001EA335 /* ticket_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ticket_b@2x.png"; sourceTree = "<group>"; };
+		978A8E171DDAD03B001EA335 /* ticket_b@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ticket_b@3x.png"; sourceTree = "<group>"; };
+		978A8E1A1DDAD253001EA335 /* OrderListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListVC.h; sourceTree = "<group>"; };
+		978A8E1B1DDAD253001EA335 /* OrderListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListVC.m; sourceTree = "<group>"; };
+		978A8E1D1DDAD2ED001EA335 /* CouponVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponVC.h; sourceTree = "<group>"; };
+		978A8E1E1DDAD2ED001EA335 /* CouponVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponVC.m; sourceTree = "<group>"; };
+		978A8E201DDAD523001EA335 /* CouponGetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponGetVC.h; sourceTree = "<group>"; };
+		978A8E211DDAD523001EA335 /* CouponGetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponGetVC.m; sourceTree = "<group>"; };
 		978B69CB1DD169C00013E6B0 /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
 		978B69CC1DD169C00013E6B0 /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
 		978B69CF1DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AWDeallocBlock.h"; sourceTree = "<group>"; };
@@ -1087,6 +1100,8 @@
 				97069FAD1DCC2DE10081668B /* coupon@3x.png */,
 				97069FAE1DCC2DE10081668B /* order@2x.png */,
 				97069FAF1DCC2DE10081668B /* order@3x.png */,
+				978A8E161DDAD03B001EA335 /* ticket_b@2x.png */,
+				978A8E171DDAD03B001EA335 /* ticket_b@3x.png */,
 				975822D31DCACE3B00CA1476 /* nodata.png */,
 				975822D51DCACE4300CA1476 /* notransfer.png */,
 				97069FB91DCC65750081668B /* setting_head_bg.png */,
@@ -1378,6 +1393,12 @@
 				978344761DD46C2A0065334A /* ApplyBusVC.m */,
 				97F1599E1DD9A41F0001FC81 /* BusOrderVC.h */,
 				97F1599F1DD9A41F0001FC81 /* BusOrderVC.m */,
+				978A8E1A1DDAD253001EA335 /* OrderListVC.h */,
+				978A8E1B1DDAD253001EA335 /* OrderListVC.m */,
+				978A8E1D1DDAD2ED001EA335 /* CouponVC.h */,
+				978A8E1E1DDAD2ED001EA335 /* CouponVC.m */,
+				978A8E201DDAD523001EA335 /* CouponGetVC.h */,
+				978A8E211DDAD523001EA335 /* CouponGetVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1898,12 +1919,14 @@
 				97F1313D1DAB21B800806E8A /* Default-568h@2x.png in Resources */,
 				975821F81DC9943800CA1476 /* icon_clear@3x.png in Resources */,
 				975822831DC9B71200CA1476 /* 72.png in Resources */,
+				978A8E181DDAD03B001EA335 /* ticket_b@2x.png in Resources */,
 				975821F91DC9943800CA1476 /* icon_end@2x.png in Resources */,
 				975822801DC9B71200CA1476 /* 60.png in Resources */,
 				9758227C1DC9B71200CA1476 /* 50.png in Resources */,
 				97069FD41DCC6C270081668B /* route@2x.png in Resources */,
 				975821FF1DC9943800CA1476 /* icon_invite@2x.png in Resources */,
 				975822391DC9943800CA1476 /* wechat@2x.png in Resources */,
+				978A8E191DDAD03B001EA335 /* ticket_b@3x.png in Resources */,
 				975821E51DC9943800CA1476 /* btn_message@2x.png in Resources */,
 				9758220B1DC9943800CA1476 /* icon_search1@2x.png in Resources */,
 				9758220F1DC9943800CA1476 /* icon_start@3x.png in Resources */,
@@ -2011,6 +2034,7 @@
 				97BF23D51DBD8E1C0009F46C /* WebViewVC.m in Sources */,
 				97F130DE1DAB18D300806E8A /* AFURLConnectionOperation.m in Sources */,
 				978B69D41DD16A0F0013E6B0 /* NSObject+AWDeallocBlock.m in Sources */,
+				978A8E1C1DDAD253001EA335 /* OrderListVC.m in Sources */,
 				97F130A81DAB18C500806E8A /* UITableView+LoadEmptyOrErrorHandle.m in Sources */,
 				97579A881DBDCBBD00D99981 /* NetworkService.m in Sources */,
 				97F131981DAB400000806E8A /* MBProgressHUD.m in Sources */,
@@ -2075,6 +2099,7 @@
 				97F130A51DAB18C500806E8A /* AWMultipleColumnTableViewDataSource.m in Sources */,
 				97F130A91DAB18C500806E8A /* UITableView+LoadNetworkData.m in Sources */,
 				97F131001DAB1CAE00806E8A /* InteractVC.m in Sources */,
+				978A8E1F1DDAD2ED001EA335 /* CouponVC.m in Sources */,
 				978344431DD2E4870065334A /* AWLoadingStateView.m in Sources */,
 				97F130FD1DAB1C9600806E8A /* InquireVC.m in Sources */,
 				975820F11DC6E4A800CA1476 /* CTPersistanceTable.m in Sources */,
@@ -2112,6 +2137,7 @@
 				975820DD1DC6E4A700CA1476 /* CTPersistanceAsyncExecutor.m in Sources */,
 				975821011DC6E7F600CA1476 /* SearchHistoryService.m in Sources */,
 				97579A971DBDD63F00D99981 /* AWButton.m in Sources */,
+				978A8E221DDAD523001EA335 /* CouponGetVC.m in Sources */,
 				97F130E61DAB18D300806E8A /* UIAlertView+AFNetworking.m in Sources */,
 				97F1309C1DAB18C500806E8A /* AWHairlineView.m in Sources */,
 				97F1309B1DAB18C500806E8A /* UIView+AWGeometry.m in Sources */,

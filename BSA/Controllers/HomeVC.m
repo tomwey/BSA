@@ -44,14 +44,14 @@
     self.pageSize = 15;
     
     UIView *capitionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width,
-                                                                    self.contentView.width * 0.4167)];
+                                                                    150)];
     capitionView.backgroundColor = MAIN_BLUE_COLOR;
     [self.contentView addSubview:capitionView];
     
-    NSArray *buttons = @[@"chartered.png", @"order.png", @"coupon.png"];
-    NSArray *titles  = @[@"我要包车", @"我的订单", @"优惠券"];
+    NSArray *buttons = @[@"chartered.png", @"ticket_b.png", @"order.png", @"coupon.png"];
+    NSArray *titles  = @[@"我要包车", @"我的车票", @"我的订单", @"优惠券"];
     NSInteger i = 0;
-    CGFloat left = 40;
+    CGFloat left = 27;
     for (NSString *image in buttons) {
         UIButton *btn = AWCreateImageButton(image, self, @selector(homeBtnClick:));
         [capitionView addSubview:btn];
@@ -105,21 +105,36 @@
 - (void)homeBtnClick:(UIButton *)sender
 {
     switch (sender.tag) {
-        case 1:
+        case 0:
         {
             // 我要包车
             UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"ApplyBusVC" params:nil];
             [self.tabBarController.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 1:
+        {
+            // 我的车票
+            
+        }
+            break;
         case 2:
         {
             // 我的订单
+            if ( ![[UserService sharedInstance] currentUser] ) {
+                UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
+                [self.tabBarController.navigationController pushViewController:vc animated:YES];
+            } else {
+                UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"OrderListVC" params:nil];
+                [self.tabBarController.navigationController pushViewController:vc animated:YES];
+            }
         }
             break;
         case 3:
         {
             // 优惠券
+            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"CouponVC" params:nil];
+            [self.tabBarController.navigationController pushViewController:vc animated:YES];
         }
             break;
             

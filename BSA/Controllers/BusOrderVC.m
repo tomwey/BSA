@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navBar.title = self.params[@"title"];
+    self.navBar.title = @"线路订购详情";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,16 +37,6 @@
 - (BOOL)handleRequest:(NSURLRequest *)request
        navigationType:(UIWebViewNavigationType)navigationType
 {
-//    if ( navigationType == UIWebViewNavigationTypeOther &&
-//        ([request.URL.absoluteString rangeOfString:@"pay/default.aspx"].location != NSNotFound ||
-//         [request.URL.absoluteString rangeOfString:@"login.html"].location != NSNotFound)) {
-//        if ( ![[UserService sharedInstance] currentUser] || [[self.webView localStorageStringForKey:@"userid"] length] == 0 ) {
-//            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
-//            [self.navigationController pushViewController:vc animated:YES];
-//            return NO;
-//        }
-//    }
-//    NSLog(@"request: %@, type: %d", request, navigationType);
     if ( [request.URL.absoluteString rangeOfString:@"/login.html"].location != NSNotFound &&
          [[self.webView localStorageStringForKey:@"userid"] length] == 0) {
         UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
@@ -58,7 +48,7 @@
 
 - (NSString *)pageUrl
 {
-    return self.params[@"pageUrl"];
+    return [NSString stringWithFormat:@"%@&paytype=1", self.params[@"pageUrl"]];
 }
 
 @end

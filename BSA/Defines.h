@@ -64,6 +64,15 @@
 // 我要包车
 #define APPLY_BUS_URL         @"http://tadi.adgom.cn:9091/BSH/carAppointment.html"
 
+// 我的订单
+#define ORDER_LIST_URL        @"http://tadi.adgom.cn:9091/BSH/myOrderList.html"
+
+// 优惠券
+#define COUPON_LIST_URL       @"http://tadi.adgom.cn:9091/BSH/couponList.html"
+
+// 优惠券领取
+#define COUPON_GET_URL        @"http://tadi.adgom.cn:9091/BSH/get_coupon.html"
+
 // 广场列表地址
 #define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/square.html"
 

@@ -30,7 +30,10 @@
     
     [self.webView removeGrayBackground];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self pageUrl]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self pageUrl]]
+                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                         timeoutInterval:30.0];
+    [self.webView loadRequest:request];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
