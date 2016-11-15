@@ -32,7 +32,13 @@
     if ( [request.URL.absoluteString rangeOfString:@"myOrderList.html"].location != NSNotFound ) {
         return YES;
     } else {
-        UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC" params:@{ @"pageUrl": request.URL.absoluteString }];
+        void (^returnCallback)(NSString *newUrl) = ^(NSString *newUrl) {
+            [self.webView reload];
+        };
+        UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC"
+                                                                    params:@{ @"pageUrl": request.URL.absoluteString,
+                                                                              @"returnCallback": returnCallback
+                                                                              }];
         [self.navigationController pushViewController:vc animated:YES];
         return NO;
     }

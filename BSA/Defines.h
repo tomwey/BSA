@@ -46,8 +46,9 @@
 
 #define HOME_HAIRLINE_COLOR   MAIN_BG_COLOR//AWColorFromRGB(240, 240, 242)
 
-#define WX_APP_ID     @"wx0a45255c7eb48647"
-#define WX_APP_SECRET @"31130acde0e69ede9e6850f86f0050d8"
+#define WX_APP_ID     @"wx12a8c7dde0275a05"
+#define WX_APP_KEY    @"z2h0s1j5ysl3jh45d8n2he87xp43dzgj"
+#define WX_APP_SECRET @"d4624c36b6795d1d99dcf0547af5443d"
 
 #define QQ_APP_ID     @"1105816344"
 #define QQ_APP_SECRET @"L05JC5Hy601sqPph"

@@ -8,6 +8,8 @@
 
 #import "BusOrderVC.h"
 #import "Defines.h"
+#import "WXApiObject.h"
+#import "WXApi.h"
 
 @interface BusOrderVC ()
 
@@ -20,6 +22,11 @@
     // Do any additional setup after loading the view.
     
     self.navBar.title = @"线路订购详情";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orderPaySuccess)
+                                                 name:@"kOrderPaySuccessNotification"
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -34,6 +41,32 @@
     }
 }
 
+- (void)orderPaySuccess
+{
+    void (^returnCallback)(NSString *newUrl) = self.params[@"returnCallback"];
+    if ( !returnCallback ) {
+        // forward
+        UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"OrderListVC" params:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        // back
+        returnCallback(nil);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)sendPayRequest:(NSDictionary *)orderParams
+{
+    PayReq *request   = [[PayReq alloc] init];
+    request.partnerId = @"1284047701";
+    request.prepayId  = orderParams[@"prepayid"];
+    request.package   = @"Sign=WXPay";
+    request.nonceStr  = orderParams[@"noncestr"];
+    request.timeStamp = [orderParams[@"timestamp"] intValue];
+    request.sign      = orderParams[@"sign"];
+    [WXApi sendReq:request];
+}
+
 - (BOOL)handleRequest:(NSURLRequest *)request
        navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -41,6 +74,14 @@
          [[self.webView localStorageStringForKey:@"userid"] length] == 0) {
         UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
         [self.navigationController pushViewController:vc animated:YES];
+        return NO;
+    } else if ( [request.URL.absoluteString rangeOfString:@"/pay?"].location != NSNotFound ) {
+        NSString *keyValues = [[request.URL.absoluteString componentsSeparatedByString:@"?"] lastObject];
+        NSDictionary *params = [keyValues queryDictionaryUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"params: %@", params);
+        
+        [self sendPayRequest:params];
+        
         return NO;
     }
     return YES;

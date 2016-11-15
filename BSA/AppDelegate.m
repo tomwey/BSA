@@ -84,12 +84,15 @@
 //    [[VersionCheckService sharedInstance] startCheckWithSilent:YES];
     
     // 友盟统计
-//    UMConfigInstance.appKey = UMENG_KEY;
-//    UMConfigInstance.channelId = @"App Store";
-//    [MobClick startWithConfigure:UMConfigInstance];
+    UMConfigInstance.appKey = UMENG_KEY;
+    UMConfigInstance.channelId = @"App Store";
+    [MobClick startWithConfigure:UMConfigInstance];
     
     // 初始化分享SDK
-//    [self initShareSDK];
+    [self initShareSDK];
+    
+    // 微信支付
+    [WXApi registerApp:WX_APP_ID withDescription:@"微信支付"];
     
     return YES;
 }
@@ -138,6 +141,26 @@
 -(void)onResp:(BaseResp *)resp
 {
     NSLog(@"The response of wechat.");
+    if ( [resp isKindOfClass:[PayResp class]] ) {
+        PayResp *payResp = (PayResp *)resp;
+        switch (payResp.errCode) {
+            case WXSuccess:
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kOrderPaySuccessNotification" object:nil];
+            }
+                break;
+            case WXErrCodeUserCancel:
+            {
+                [AWAppWindow() makeToast:@"支付取消" duration:2.0 position:CSToastPositionTop];
+            }
+                break;
+            default:
+            {
+                [AWAppWindow() makeToast:@"支付失败" duration:2.0 position:CSToastPositionTop];
+            }
+                break;
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

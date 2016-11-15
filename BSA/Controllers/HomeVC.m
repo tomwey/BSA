@@ -271,8 +271,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                              LINE_DETAIL_URL,
                              [selectedData valueForKey:@"LineNo"],
                              [selectedData valueForKey:@"MonthType"]];
-            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC" params:@{ @"pageUrl": url,
-                                                                                                       @"title": @"线路订购详情"}];
+            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC"
+                                                                        params:@{ @"pageUrl": url,
+                                                                                  @"title": @"线路订购详情",
+                                                                                  }];
             [me.tabBarController.navigationController pushViewController:vc animated:YES];
             
 //            WebViewVC *page = [[WebViewVC alloc] initWithURL:url title:@"线路订购详情"];
