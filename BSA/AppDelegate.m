@@ -92,7 +92,7 @@
     [self initShareSDK];
     
     // 微信支付
-    [WXApi registerApp:WX_APP_ID withDescription:@"微信支付"];
+//    [WXApi registerApp:WX_APP_ID withDescription:@"RSA"];
     
     return YES;
 }

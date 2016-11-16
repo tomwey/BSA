@@ -190,6 +190,7 @@
 #import "SexPicker.h"
 #import "InputCell.h"
 #import "BannerView.h"
+#import "TicketView.h"
 
 // Controllers
 #import "WebViewVC.h"
