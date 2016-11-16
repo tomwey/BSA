@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>定制公交</string>
+	<string>商务专车</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFiles</key>
@@ -131,9 +131,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>《哈密公交》需要使用您的地理位置，以便使用里面的各项功能。</string>
+	<string>《商务专车》需要使用您的地理位置，以便使用里面的各项功能。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>《哈密公交》需要使用您的地理位置，以便使用里面的各项功能。</string>
+	<string>《商务专车》需要使用您的地理位置，以便使用里面的各项功能。</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -149,6 +149,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>privacy - location usage description</key>
-	<string>《哈密公交》需要使用您的地理位置，以便使用里面的各项功能。</string>
+	<string>《商务专车》需要使用您的地理位置，以便使用里面的各项功能。</string>
 </dict>
 </plist>
