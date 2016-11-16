@@ -57,7 +57,11 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
+    __weak typeof(self) me = self;
+    [self startLoadingInView:self.contentView forStateViewClass:[AWLoadingStateView class] reloadCallback:^{
+        [me.webView reload];
+    }];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
@@ -69,12 +73,14 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+    [self finishLoading:AWLoadingStateSuccess];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
 {
-    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+    [self finishLoading:AWLoadingStateFailure];
 }
 
 @end

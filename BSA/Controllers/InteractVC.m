@@ -47,6 +47,8 @@
     [self.contentView addSubview:self.webView];
     self.webView.delegate = self;
     
+    self.webView.scalesPageToFit = YES;
+    
     [self.webView removeGrayBackground];
 //    self.webView.backgroundColor = [UIColor redColor];
     
@@ -60,9 +62,9 @@
         [self removeWebViewCompatity];
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
         [self startLoad];
-    });
+//    });
     
 }
 
@@ -75,24 +77,24 @@
 //    }
 //}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
-    if ( self.loadFail ) {
-        [self startLoad];
-    }
-    
-//    if ( !AWOSVersionIsLower(9.0) ) {
-//        [self removeWebViewCompatity];
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    
+////    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+//    
+//    if ( self.loadFail ) {
+//        [self startLoad];
 //    }
-}
+//    
+////    if ( !AWOSVersionIsLower(9.0) ) {
+////        [self removeWebViewCompatity];
+////    }
+//}
 
 - (void)startLoad
 {
-    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
     
     NSURL *pageURL = [NSURL URLWithString:SQUARE_LIST_URL];
     [self.webView loadRequest:[NSURLRequest requestWithURL:pageURL]];
@@ -105,7 +107,12 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    
+    __weak typeof(self) me = self;
+    [self startLoadingInView:self.contentView
+           forStateViewClass:[AWLoadingStateView class]
+              reloadCallback:^{
+        [me startLoad];
+    }];
 }
 
 - (BOOL)webView:(UIWebView *)webView
@@ -127,15 +134,17 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    self.loadFail = NO;
-    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+//    self.loadFail = NO;
+//    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+    [self finishLoading:AWLoadingStateSuccess];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    self.loadFail = YES;
-    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
-    [self.contentView makeToast:@"Oops, 出错了！" duration:2.0 position:CSToastPositionTop];
+    [self finishLoading:AWLoadingStateFailure];
+//    self.loadFail = YES;
+//    [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
+//    [self.contentView makeToast:@"Oops, 出错了！" duration:2.0 position:CSToastPositionTop];
 }
 
 @end
