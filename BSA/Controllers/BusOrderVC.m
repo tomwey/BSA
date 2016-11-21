@@ -38,6 +38,9 @@
         if ( [[self.webView localStorageStringForKey:@"userid"] length] == 0 ) {
             [self.webView setLocalStorageString:[[UserService sharedInstance] currentUserAuthToken] forKey:@"userid"];
         }
+    } else {
+//        [self.webView setLocalStorageString:@"" forKey:@"userid"];
+        [self.webView removeLocalStorageStringForKey:@"userid"];
     }
 }
 

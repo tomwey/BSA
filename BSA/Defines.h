@@ -75,7 +75,7 @@
 #define COUPON_GET_URL        @"http://tadi.adgom.cn:9091/BSH/get_coupon.html"
 
 // 广场列表地址
-#define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/square.html"
+#define SQUARE_LIST_URL       @"http://tadi.adgom.cn:9091/BSH/square.html"
 
 // 线路订购详情地址
 #define LINE_DETAIL_URL       @"http://tadi.adgom.cn:9091/BSH/ordering.html"

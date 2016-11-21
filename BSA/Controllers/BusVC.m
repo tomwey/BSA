@@ -114,7 +114,7 @@
 {
     NSArray *h5Pages = @[
                          @"booking.html",@"purchase.html",@"order_list.html",
-                         @"recruit.html",@"group.html",@"person.html",
+                         @"group.html",@"recruit.html",@"person.html",
                          ];
     NSArray *titles   = @[@"预约", @"订购", @"我的订单", @"参与招募",@"开行线路", @"个人需求"];
     
