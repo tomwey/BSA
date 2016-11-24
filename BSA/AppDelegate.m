@@ -147,17 +147,18 @@
         switch (payResp.errCode) {
             case WXSuccess:
             {
+                [AWAppWindow() makeToast:@"微信支付成功" duration:2.0 position:CSToastPositionTop];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"kOrderPaySuccessNotification" object:nil];
             }
                 break;
             case WXErrCodeUserCancel:
             {
-                [AWAppWindow() makeToast:@"支付取消" duration:2.0 position:CSToastPositionTop];
+                [AWAppWindow() makeToast:@"微信支付取消" duration:2.0 position:CSToastPositionTop];
             }
                 break;
             default:
             {
-                [AWAppWindow() makeToast:@"支付失败" duration:2.0 position:CSToastPositionTop];
+                [AWAppWindow() makeToast:@"微信支付失败" duration:2.0 position:CSToastPositionTop];
             }
                 break;
         }
@@ -200,7 +201,20 @@
 {
     // 支付跳转支付宝钱包进行支付，处理支付结果
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-        NSLog(@"result = %@",resultDic);
+//        NSLog(@"result = %@",resultDic);
+//        if ( [resultDic[@"resultStatus"] integerValue] == 9000 ) {
+//            
+//        } else {
+//            
+//        }
+        // 此处就简单处理了
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.window makeToast:[resultDic[@"memo"] description] duration:2.0 position:CSToastPositionTop];
+            
+            if ( [resultDic[@"resultStatus"] integerValue] == 9000 ) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kOrderPaySuccessNotification" object:nil];
+            }
+        });
     }];
     
     // 授权跳转支付宝钱包进行支付，处理支付结果

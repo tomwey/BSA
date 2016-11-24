@@ -95,14 +95,24 @@
         UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
         [self.navigationController pushViewController:vc animated:YES];
         return NO;
-    } else if ( [request.URL.absoluteString rangeOfString:@"/pay?"].location != NSNotFound ) {
+    } else if ( [request.URL.absoluteString hasPrefix:@"alipay://"] ) {
+        
+        self.fromLogin = NO;
+        
+        NSString *orderString = [[request.URL.absoluteString componentsSeparatedByString:@"?"] lastObject];
+        
+        [self sendAlipay:orderString];
+
+        return NO;
+    } else if ( [request.URL.absoluteString hasPrefix:@"weixin://"] ) {
+        
+        self.fromLogin = NO;
+        
         NSString *keyValues = [[request.URL.absoluteString componentsSeparatedByString:@"?"] lastObject];
         NSDictionary *params = [keyValues queryDictionaryUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"params: %@", params);
         
         [self sendPayRequest:params];
-        
-        self.fromLogin = NO;
         
         return NO;
     }
