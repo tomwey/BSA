@@ -209,10 +209,12 @@
 //        }
         // 此处就简单处理了
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.window makeToast:[resultDic[@"memo"] description] duration:2.0 position:CSToastPositionTop];
             
             if ( [resultDic[@"resultStatus"] integerValue] == 9000 ) {
+//                [self.window makeToast:@"支付宝支付成功" duration:2.0 position:CSToastPositionTop];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"kOrderPaySuccessNotification" object:nil];
+            } else {
+                [self.window makeToast:@"支付宝支付失败" duration:2.0 position:CSToastPositionTop];
             }
         });
     }];

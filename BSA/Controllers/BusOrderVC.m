@@ -83,6 +83,12 @@
 {
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:@"alipaybsa" callback:^(NSDictionary *resultDic) {
         NSLog(@"--> resultDic: %@", resultDic);
+        if ( [resultDic[@"resultStatus"] integerValue] == 9000 ) {
+            //                [self.window makeToast:@"支付宝支付成功" duration:2.0 position:CSToastPositionTop];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kOrderPaySuccessNotification" object:nil];
+        } else {
+            [AWAppWindow() makeToast:@"支付宝支付失败" duration:2.0 position:CSToastPositionTop];
+        }
     }];;
 }
 
@@ -100,8 +106,27 @@
         self.fromLogin = NO;
         
         NSString *orderString = [[request.URL.absoluteString componentsSeparatedByString:@"?"] lastObject];
+        NSDictionary *result = [orderString queryDictionaryUsingEncoding:NSUTF8StringEncoding];
         
-        [self sendAlipay:orderString];
+        NSString *newOrderString = [NSString stringWithFormat:@"partner=\"%@\"&seller_id=\"%@\"&out_trade_no=\"%@\"&subject=\"%@\"&body=\"%@\"&total_fee=\"%@\"&notify_url=\"%@\"&service=\"%@\"&payment_type=\"%@\"&_input_charset=\"%@\"&it_b_pay=\"%@\"&sign=\"%@\"&sign_type=\"%@\"",
+                                    result[@"partner"],
+                                    result[@"seller_id"],
+                                    result[@"out_trade_no"],
+                                    result[@"subject"],
+                                    result[@"body"],
+                                    result[@"total_fee"],
+                                    result[@"notify_url"],
+                                    result[@"service"],
+                                    result[@"payment_type"],
+                                    result[@"_input_charset"],
+                                    result[@"it_b_pay"],
+//                                    result[@"show_url"],
+                                    [result[@"sign"] URLEncode],
+                                    result[@"sign_type"] ];
+        
+        NSLog(@"orderString: %@", newOrderString);
+        
+        [self sendAlipay:newOrderString];
 
         return NO;
     } else if ( [request.URL.absoluteString hasPrefix:@"weixin://"] ) {

@@ -2413,6 +2413,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkhb.bsa;
 				PRODUCT_NAME = BSA;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2443,6 +2444,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkhb.bsa;
 				PRODUCT_NAME = BSA;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
