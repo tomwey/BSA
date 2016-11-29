@@ -1992,7 +1992,6 @@
 				TargetAttributes = {
 					97F12FE91DAB15AA00806E8A = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 79SKJWCAJL;
 					};
 				};
 			};
@@ -2414,6 +2413,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkhb.bsa;
 				PRODUCT_NAME = BSA;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2444,6 +2444,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkhb.bsa;
 				PRODUCT_NAME = BSA;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

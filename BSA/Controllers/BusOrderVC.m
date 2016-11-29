@@ -108,7 +108,7 @@
         NSString *orderString = [[request.URL.absoluteString componentsSeparatedByString:@"?"] lastObject];
         NSDictionary *result = [orderString queryDictionaryUsingEncoding:NSUTF8StringEncoding];
         
-        NSString *newOrderString = [NSString stringWithFormat:@"partner=\"%@\"&seller_id=\"%@\"&out_trade_no=\"%@\"&subject=\"%@\"&body=\"%@\"&total_fee=\"%@\"&notify_url=\"%@\"&service=\"%@\"&payment_type=\"%@\"&_input_charset=\"%@\"&it_b_pay=\"%@\"&show_url=\"%@\"&sign=\"%@\"&sign_type=\"%@\"",
+        NSString *newOrderString = [NSString stringWithFormat:@"partner=\"%@\"&seller_id=\"%@\"&out_trade_no=\"%@\"&subject=\"%@\"&body=\"%@\"&total_fee=\"%@\"&notify_url=\"%@\"&service=\"%@\"&payment_type=\"%@\"&_input_charset=\"%@\"&it_b_pay=\"%@\"&sign=\"%@\"&sign_type=\"%@\"",
                                     result[@"partner"],
                                     result[@"seller_id"],
                                     result[@"out_trade_no"],
@@ -120,7 +120,7 @@
                                     result[@"payment_type"],
                                     result[@"_input_charset"],
                                     result[@"it_b_pay"],
-                                    result[@"show_url"],
+//                                    result[@"show_url"],
                                     [result[@"sign"] URLEncode],
                                     result[@"sign_type"] ];
         
