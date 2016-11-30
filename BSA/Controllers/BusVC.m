@@ -53,10 +53,14 @@
     [tickView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoTicket)]];
     tickView.userInteractionEnabled = YES;
     
-    CGFloat factor = tickView.image.size.height / tickView.image.size.width;
-    bgView.frame = CGRectMake(0, headView.bottom + margin, self.contentView.width, self.contentView.width * factor);
+    CGFloat factor = 331 / 1179.0;
     
-    tickView.frame = CGRectInset(bgView.bounds, 10, 10);
+    CGFloat width = self.contentView.width - 20;
+    CGFloat height = width * factor;
+    
+    bgView.frame = CGRectMake(0, headView.bottom + margin, self.contentView.width, height + 20);
+    
+    tickView.frame = CGRectMake(10, 10, width, height);
     
     // 功能区域
     NSArray *sections = @[@"subscribe.png",@"purchase.png",@"dzorder.png",@"recruit.png",@"route.png",@"demand.png"];

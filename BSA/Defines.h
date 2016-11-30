@@ -59,7 +59,7 @@
 #define OFFICIAL_TELPHONE @"18108037442"
 #define OFFICIAL_QQ       @"2757801355"
 
-#define OFFICIAL_WECHAT_URL   @"http://tdzh.cddzgj.com:9091/weixin.html"
+#define OFFICIAL_WECHAT_URL   @"http://tdzh.cddzgj.com:9091/BSH/weixin.html"
 #define FEEDBACK_URL          @"http://tdzh.cddzgj.com:9091/RTH/feedback.html"
 
 // 我要包车

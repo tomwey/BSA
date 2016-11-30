@@ -39,7 +39,7 @@
     UILabel *tipLabel = AWCreateLabel(CGRectMake(0, wxView.bottom + 20,
                                                  self.contentView.width,
                                                  34),
-                                      @"扫描二维码下载客户端, 我的公交出行必备～",
+                                      @"扫描二维码下载客户端, 为您个性定制出行～",
                                       NSTextAlignmentCenter,
                                       AWSystemFontWithSize(14, NO),
                                       AWColorFromRGB(201, 201, 201));
@@ -148,7 +148,7 @@
     [params SSDKSetupShareParamsByText:nil
                                 images:AWImageNoCached(@"logo.png")
                                    url:[self shareLink]
-                                 title:@"不再傻等，掐点出门。哈密实时公交，您的掌上公交神器。"
+                                 title:@"商务班车，舒适快捷，您的出行优选。"
                                   type:SSDKContentTypeWebPage];
     
     [ShareSDK share:type
@@ -234,7 +234,7 @@
 
 - (NSString *)shareContent
 {
-    return [NSString stringWithFormat:@"不再傻等，掐点出门。哈密实时公交，您的掌上公交神器。\n%@",
+    return [NSString stringWithFormat:@"商务班车，舒适快捷，您的出行优选。\n%@",
             [[[VersionCheckService sharedInstance] appInfo] valueForKey:@"QRUrl"]];
 }
 

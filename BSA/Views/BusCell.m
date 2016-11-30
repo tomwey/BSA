@@ -149,11 +149,16 @@
     self.leftTicketsLabel.attributedText = attrText;
     
     // 预定时间提醒
-    NSString *timeReminder = [NSString stringWithFormat:@"还有%@订购结束", [data valueForKey:@"TimeName"]];
-    attrText = [[NSMutableAttributedString alloc] initWithString:timeReminder];
-    [attrText addAttributes:@{ NSForegroundColorAttributeName: AWColorFromRGB(247, 152, 39) }
-                      range:NSMakeRange(2, attrText.string.length - 6)];
-    self.orderTimeTipLabel.attributedText = attrText;
+    if ( [[data valueForKey:@"TimeName"] description].length == 0 ) {
+        self.orderTimeTipLabel.text = @"已结束";
+    } else {
+        NSString *timeReminder = [NSString stringWithFormat:@"还有%@订购结束", [data valueForKey:@"TimeName"]];
+        attrText = [[NSMutableAttributedString alloc] initWithString:timeReminder];
+        [attrText addAttributes:@{ NSForegroundColorAttributeName: AWColorFromRGB(247, 152, 39) }
+                          range:NSMakeRange(2, attrText.string.length - 6)];
+        self.orderTimeTipLabel.attributedText = attrText;
+    }
+    
 }
 
 - (void)layoutSubviews
