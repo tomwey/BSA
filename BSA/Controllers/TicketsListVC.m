@@ -30,7 +30,7 @@
     
     self.navBar.title = @"我的车票";
     
-    self.contentView.backgroundColor = AWColorFromRGB(219, 230, 239);
+    self.contentView.backgroundColor = AWColorFromRGB(242, 242, 242);//AWColorFromRGB(219, 230, 239);
     
 //    self.pageSize = 2;
 //    self.currentPage = 1;
@@ -40,6 +40,8 @@
     self.carousel = [[iCarousel alloc] init];
     [self.contentView addSubview:self.carousel];
     self.carousel.frame = self.contentView.bounds;
+    
+    self.carousel.backgroundColor = AWColorFromRGB(219, 230, 239);
     
     self.carousel.dataSource = self;
     self.carousel.delegate   = self;
@@ -73,12 +75,15 @@
     [self.dataService POST:@"GetUserTikect" params:@{ @"userid": [[UserService sharedInstance] currentUserAuthToken] }
                 completion:^(id result, NSError *error) {
                     if ( error ) {
+//                        self.contentView.backgroundColor = AWColorFromRGB(242, 242, 242);
                         [self finishLoading:AWLoadingStateFailure];
                     } else {
                         NSArray *data = result[@"DataList"];
                         if ( [data count] == 0 ) {
+//                            self.contentView.backgroundColor = AWColorFromRGB(242, 242, 242);
                             [self finishLoading:AWLoadingStateEmptyResult];
                         } else {
+//                            self.contentView.backgroundColor = AWColorFromRGB(219, 230, 239);
                             [self finishLoading:AWLoadingStateSuccess];
                             
                             [self.dataSource addObjectsFromArray:data];

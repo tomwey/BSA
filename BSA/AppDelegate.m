@@ -82,7 +82,7 @@
     
     [self.window makeKeyAndVisible];
     
-//    [[VersionCheckService sharedInstance] startCheckWithSilent:YES];
+    [[VersionCheckService sharedInstance] startCheckWithSilent:YES];
     
     // 友盟统计
     UMConfigInstance.appKey = UMENG_KEY;

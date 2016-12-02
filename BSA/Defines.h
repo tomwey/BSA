@@ -59,7 +59,7 @@
 #define OFFICIAL_TELPHONE @"18108037442"
 #define OFFICIAL_QQ       @"2757801355"
 
-#define OFFICIAL_WECHAT_URL   @"http://tdzh.cddzgj.com:9091/weixin.html"
+#define OFFICIAL_WECHAT_URL   @"http://tadi.adgom.cn:9091/BSH/weixin.html"
 #define FEEDBACK_URL          @"http://tdzh.cddzgj.com:9091/RTH/feedback.html"
 
 // 我要包车
@@ -131,7 +131,7 @@
 #define CHECK_VER_CODE   @"CheckVerCode" // tel, vercode
 
 // 判断用户是否存在
-#define IS_EXIST_USER_INFO @"IsExitUserInfo" // tel
+#define IS_EXIST_USER_INFO @"IsExistUserInfo" // tel
 
 // 首页获取站点
 #define GET_STATION_BY_LNG_AND_LAT @"GetStationByLngAndLat" // lng, lat

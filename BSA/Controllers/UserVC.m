@@ -30,7 +30,7 @@ UINavigationControllerDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navBar.title = @"用户信息";
+    self.navBar.title = @"个人资料";
     
     self.tableView = [[UITableView alloc] initWithFrame:self.contentView.bounds style:UITableViewStyleGrouped];
     [self.contentView addSubview:self.tableView];
@@ -41,15 +41,27 @@ UINavigationControllerDelegate>
     self.tableView.rowHeight  = 60;
     
     [self.tableView removeBlankCells];
+//
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.user = [[UserService sharedInstance] currentUser];
+    __weak typeof(self) me = self;
+    [self.dataService POST:@"/GetUserModel" params:@{ @"userid": [[UserService sharedInstance] currentUserAuthToken] } completion:^(id result, NSError *error) {
+//        NSLog(@"");
+        if ( error ) {
+            
+        } else {
+            [[UserService sharedInstance] saveUser:[[User alloc] initWithDictionary:result]];
+        }
+        
+        me.user = [[UserService sharedInstance] currentUser];
+        
+        [me.tableView reloadData];
+    }];
     
-    [self.tableView reloadData];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
@@ -63,7 +75,7 @@ UINavigationControllerDelegate>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,13 +84,17 @@ UINavigationControllerDelegate>
         return 4;
     }
     
+    if ( section == 1 ) {
+        return 2;
+    }
+    
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellId = indexPath.section == 0 ? @"cell.id" : @"cell.id2";
-    UITableViewCellStyle style = indexPath.section == 0 ? UITableViewCellStyleValue1 : UITableViewCellStyleDefault;
+    NSString *cellId = indexPath.section != 2 ? @"cell.id" : @"cell.id2";
+    UITableViewCellStyle style = indexPath.section != 2 ? UITableViewCellStyleValue1 : UITableViewCellStyleDefault;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if ( !cell ) {
@@ -114,6 +130,16 @@ UINavigationControllerDelegate>
         } else if ( indexPath.row == 3 ) {
             cell.textLabel.text = @"生日";
             cell.detailTextLabel.text = [self.user formatBirth];
+        }
+    } else if ( indexPath.section == 1 ) {
+        if ( indexPath.row == 0 ) {
+            cell.textLabel.text = @"手机号码";
+            cell.detailTextLabel.text = [[UserService sharedInstance] currentUserAuthToken];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else if ( indexPath.row == 1 ) {
+            cell.textLabel.text = @"修改密码";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     } else {
         cell.textLabel.text = @"退出登录";
@@ -187,6 +213,11 @@ UINavigationControllerDelegate>
                 }];
                 
             }];
+        }
+    } else if ( indexPath.section == 1 ) {
+        if ( indexPath.row == 1 ) {
+            UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"MobileInputVC" params:nil];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     } else {
         [[[UIAlertView alloc] initWithTitle:@"退出登录" message:@"你确定吗？"

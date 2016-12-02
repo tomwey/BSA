@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navBar.title = @"添加行程";
+    self.navBar.title = @"行程";
     
     self.shouldShowLoading = YES;
 }

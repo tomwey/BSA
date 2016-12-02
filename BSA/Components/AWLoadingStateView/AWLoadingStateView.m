@@ -25,7 +25,7 @@
     AWLoadingResultView *resultView = [[AWLoadingResultView alloc] init];
     resultView.frame = CGRectMake(0, 0, 320, 320);
     resultView.errorMessage = @"加载出错了，点击重试";
-    resultView.emptyMessage = @"经过努力，未获取到数据！";
+    resultView.emptyMessage = @"很抱歉，暂未查询到相关数据";
     return resultView;
 }
 
