@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     
-    self.navBar.title = @"搜索";
+    self.navBar.title = @"地址";
     
 }
 

@@ -50,6 +50,11 @@
     
     self.userField = userField;
     
+    if ( [[UserService sharedInstance] currentUser] ) {
+        userField.text = [[UserService sharedInstance] currentUserAuthToken];
+        userField.enabled = NO;
+    }
+    
     // 获取验证码按钮
     AWButton *codeBtn = [AWButton buttonWithTitle:@"获取验证码" color:NAV_BAR_BG_COLOR];
     [inputBGView addSubview:codeBtn];

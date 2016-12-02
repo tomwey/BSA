@@ -131,7 +131,7 @@
 #define CHECK_VER_CODE   @"CheckVerCode" // tel, vercode
 
 // 判断用户是否存在
-#define IS_EXIST_USER_INFO @"IsExitUserInfo" // tel
+#define IS_EXIST_USER_INFO @"IsExistUserInfo" // tel
 
 // 首页获取站点
 #define GET_STATION_BY_LNG_AND_LAT @"GetStationByLngAndLat" // lng, lat

@@ -273,7 +273,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                              [selectedData valueForKey:@"MonthType"]];
             UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"BusOrderVC"
                                                                         params:@{ @"pageUrl": url,
-                                                                                  @"title": @"线路订购详情",
+                                                                                  @"title": @"订购",
                                                                                   }];
             [me.tabBarController.navigationController pushViewController:vc animated:YES];
             

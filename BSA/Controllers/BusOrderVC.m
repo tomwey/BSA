@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navBar.title = @"线路订购详情";
+    self.navBar.title = @"订购";
     
     self.fromLogin = NO;
     
