@@ -46,6 +46,8 @@
 
 #define HOME_HAIRLINE_COLOR   MAIN_BG_COLOR//AWColorFromRGB(240, 240, 242)
 
+#define BUTTON_COLOR AWColorFromRGB(44,154,248)
+
 #define WX_APP_ID     @"wx12a8c7dde0275a05"
 #define WX_APP_KEY    @"z2h0s1j5ysl3jh45d8n2he87xp43dzgj"
 #define WX_APP_SECRET @"d4624c36b6795d1d99dcf0547af5443d"
@@ -131,7 +133,7 @@
 #define CHECK_VER_CODE   @"CheckVerCode" // tel, vercode
 
 // 判断用户是否存在
-#define IS_EXIST_USER_INFO @"IsExistUserInfo" // tel
+#define IS_EXIST_USER_INFO @"IsExitUser" // tel
 
 // 首页获取站点
 #define GET_STATION_BY_LNG_AND_LAT @"GetStationByLngAndLat" // lng, lat

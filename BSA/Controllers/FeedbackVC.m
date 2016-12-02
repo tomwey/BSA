@@ -34,7 +34,7 @@
     
     self.bodyView = textView;
     
-    AWButton *sendBtn = [AWButton buttonWithTitle:@"提交" color:NAV_BAR_BG_COLOR];
+    AWButton *sendBtn = [AWButton buttonWithTitle:@"提交" color:BUTTON_COLOR];
     sendBtn.frame = textView.frame;
     sendBtn.height = 44;
     sendBtn.top = textView.bottom  + 20;

@@ -265,7 +265,7 @@
                                       nil,
                                       NSTextAlignmentCenter,
                                       AWSystemFontWithSize(14, NO),
-                                      AWColorFromRGB(83,83,83));
+                                      AWColorFromRGB(102,102,102));
         [self.containerView addSubview:_onlineDateLabel];
         _onlineDateLabel.numberOfLines = 2;
     }
@@ -279,7 +279,7 @@
                                         nil,
                                         NSTextAlignmentLeft,
                                         AWSystemFontWithSize(16, NO),
-                                        AWColorFromRGB(39, 39, 39));
+                                        AWColorFromRGB(51, 51, 51));
         [self.containerView addSubview:_startNameLabel];
     }
     return _startNameLabel;
@@ -292,7 +292,7 @@
                                        nil,
                                        NSTextAlignmentLeft,
                                        AWSystemFontWithSize(13, YES),
-                                       AWColorFromRGB(135, 135, 135));
+                                       AWColorFromRGB(153, 153, 153));
         [self.containerView addSubview:_startAddressLabel];
     }
     return _startAddressLabel;
@@ -318,7 +318,7 @@
                                         nil,
                                         NSTextAlignmentLeft,
                                         AWSystemFontWithSize(16, NO),
-                                        AWColorFromRGB(39, 39, 39));
+                                        AWColorFromRGB(51, 51, 51));
         [self.containerView addSubview:_endNameLabel];
     }
     return _endNameLabel;
@@ -331,7 +331,7 @@
                                            nil,
                                            NSTextAlignmentLeft,
                                            AWSystemFontWithSize(13, YES),
-                                           AWColorFromRGB(135, 135, 135));
+                                           AWColorFromRGB(153, 153, 153));
         [self.containerView addSubview:_endAddressLabel];
     }
     return _endAddressLabel;
@@ -357,7 +357,7 @@
                                          nil,
                                          NSTextAlignmentLeft,
                                          AWSystemFontWithSize(13, YES),
-                                         AWColorFromRGB(135, 135, 135));
+                                         AWColorFromRGB(153, 153, 153));
         [self.containerView addSubview:_busIntroLabel];
     }
     return _busIntroLabel;
@@ -370,7 +370,7 @@
                                        nil,
                                        NSTextAlignmentRight,
                                        AWSystemFontWithSize(13, YES),
-                                       AWColorFromRGB(135, 135, 135));
+                                       AWColorFromRGB(153, 153, 153));
         [self.containerView addSubview:_orderTimeTipLabel];
     }
     return _orderTimeTipLabel;
@@ -383,7 +383,7 @@
                                        nil,
                                        NSTextAlignmentRight,
                                        AWSystemFontWithSize(14, YES),
-                                       AWColorFromRGB(135, 135, 135));
+                                       AWColorFromRGB(153, 153, 153));
         [self.containerView addSubview:_leftTicketsLabel];
     }
     return _leftTicketsLabel;

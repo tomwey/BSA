@@ -90,7 +90,7 @@
 
     // 注册按钮
     CGFloat buttonWidth = ( self.contentView.width - 15 * 2 - 20 ) / 2;
-    AWButton *signupButton = [AWButton buttonWithTitle:@"注册" color:NAV_BAR_BG_COLOR];
+    AWButton *signupButton = [AWButton buttonWithTitle:@"注册" color:BUTTON_COLOR];
     [self.contentView addSubview:signupButton];
     signupButton.frame = CGRectMake(15, forgetBtn.bottom + 20, buttonWidth, 50);
     signupButton.outline = YES;
@@ -99,7 +99,7 @@
     [signupButton addTarget:self forAction:@selector(gotoSignup)];
     
     // 登录按钮
-    AWButton *loginButton = [AWButton buttonWithTitle:@"登录" color:NAV_BAR_BG_COLOR];
+    AWButton *loginButton = [AWButton buttonWithTitle:@"登录" color:BUTTON_COLOR];
     [self.contentView addSubview:loginButton];
     loginButton.frame = signupButton.frame;
     loginButton.left = self.contentView.width - loginButton.width - signupButton.left;

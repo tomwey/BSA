@@ -61,7 +61,7 @@
     self.password2Field = codeField;
     
     // 确定按钮
-    AWButton *okButton = [AWButton buttonWithTitle:@"完成" color:NAV_BAR_BG_COLOR];
+    AWButton *okButton = [AWButton buttonWithTitle:@"完成" color:BUTTON_COLOR];
     [self.contentView addSubview:okButton];
     okButton.frame = CGRectMake(15, inputBGView.bottom  + 15, inputBGView.width, 50);
     [okButton addTarget:self forAction:@selector(done)];

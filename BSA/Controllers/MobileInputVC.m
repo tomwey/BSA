@@ -56,7 +56,7 @@
     }
     
     // 获取验证码按钮
-    AWButton *codeBtn = [AWButton buttonWithTitle:@"获取验证码" color:NAV_BAR_BG_COLOR];
+    AWButton *codeBtn = [AWButton buttonWithTitle:@"获取验证码" color:BUTTON_COLOR];
     [inputBGView addSubview:codeBtn];
     codeBtn.frame = CGRectMake(0, 0, 100, 40);
     codeBtn.left = inputBGView.width - 5 - codeBtn.width;
@@ -87,7 +87,7 @@
     self.codeField = codeField;
     
     // 确定按钮
-    AWButton *okButton = [AWButton buttonWithTitle:@"确定" color:NAV_BAR_BG_COLOR];
+    AWButton *okButton = [AWButton buttonWithTitle:@"确定" color:BUTTON_COLOR];
     [self.contentView addSubview:okButton];
     okButton.frame = CGRectMake(15, inputBGView.bottom  + 15, inputBGView.width, 50);
     [okButton addTarget:self forAction:@selector(doNext)];

@@ -34,7 +34,7 @@
     textField.text = [[[UserService sharedInstance] currentUser] name] ?:
                      [[[UserService sharedInstance] currentUser] mobile];
     
-    AWButton *saveBtn = [AWButton buttonWithTitle:@"保存" color:NAV_BAR_BG_COLOR];
+    AWButton *saveBtn = [AWButton buttonWithTitle:@"保存" color:BUTTON_COLOR];
     saveBtn.frame = textField.frame;
     saveBtn.height = 44;
     saveBtn.top = textField.bottom + 20;
