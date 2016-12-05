@@ -39,7 +39,7 @@
     UILabel *tipLabel = AWCreateLabel(CGRectMake(0, wxView.bottom + 20,
                                                  self.contentView.width,
                                                  34),
-                                      @"扫描二维码下载客户端, 为您个性定制出行～",
+                                      @"扫描二维码下载客户端, 尊享专车服务",
                                       NSTextAlignmentCenter,
                                       AWSystemFontWithSize(14, NO),
                                       AWColorFromRGB(201, 201, 201));
