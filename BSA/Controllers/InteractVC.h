@@ -6,8 +6,8 @@
 //  Copyright © 2016年 tomwey. All rights reserved.
 //
 
-#import "BaseNavBarVC.h"
+#import "BaseVC.h"
 
-@interface InteractVC : BaseNavBarVC
+@interface InteractVC : BaseVC
 
 @end

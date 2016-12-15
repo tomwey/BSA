@@ -39,12 +39,15 @@
     
 //    self.automaticallyAdjustsScrollViewInsets = YES;
     
-    self.navBar.title = @"互动广场";
+//    self.navBar.title = @"互动广场";
     
-    [self addLeftItemWithView:nil];
+//    [self addLeftItemWithView:nil];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    self.webView = [[UIWebView alloc] initWithFrame:self.contentView.bounds];
-    [self.contentView addSubview:self.webView];
+    self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.webView];
+    self.webView.top = 20;
+    self.webView.height -= 20;
     self.webView.delegate = self;
     
     self.webView.scalesPageToFit = YES;
