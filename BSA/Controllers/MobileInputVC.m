@@ -53,6 +53,7 @@
     if ( [[UserService sharedInstance] currentUser] ) {
         userField.text = [[UserService sharedInstance] currentUserAuthToken];
         userField.enabled = NO;
+        userField.textColor = AWColorFromRGB(201, 201, 201);
     }
     
     // 获取验证码按钮

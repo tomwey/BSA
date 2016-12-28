@@ -22,6 +22,8 @@
 @property (nonatomic, assign) BOOL isLoadingNextPage;
 @property (nonatomic, assign) BOOL loading;
 
+@property (nonatomic, assign) CGFloat brightness;
+
 @end
 
 @implementation HomeVC
@@ -100,6 +102,15 @@
     }];
     
     [self startLoad];
+    
+    self.brightness = [UIScreen mainScreen].brightness;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [UIScreen mainScreen].brightness = self.brightness;
 }
 
 - (void)homeBtnClick:(UIButton *)sender
@@ -119,6 +130,10 @@
                 UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"LoginVC" params:nil];
                 [self.tabBarController.navigationController pushViewController:vc animated:YES];
             } else {
+                // 调整屏幕亮度
+                if ( self.brightness < 0.8 ) {
+                    [UIScreen mainScreen].brightness = 0.8;
+                }
                 UIViewController *vc = [[AWMediator sharedInstance] openVCWithName:@"TicketsListVC" params:nil];
                 [self.tabBarController.navigationController pushViewController:vc animated:YES];
             }
